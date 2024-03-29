@@ -69,7 +69,7 @@ class Router
     }
 
     /**
-     * Add a new GET route to the router.
+     * Add a new POST route to the router.
      *
      * @param string $path The URL path for the route.
      * @param string $controller The controller class name.
