@@ -10,6 +10,21 @@ use Nuazsa\Nuacof\Repositories\admin\AdminAuthRepository;
 
 class AdminAuthController
 {
+    private $authService;
+
+    /**
+     * AdminAuthController constructor.
+     * Initializes the AdminAuthService for handling authentication tasks.
+     */
+    public function __construct()
+    {
+        $connection = Connection::getConnection();
+        $authRepository = new AdminAuthRepository($connection);
+        $this->authService = new AdminAuthService($authRepository);
+
+        $connection = null;
+    }
+
     /**
      * Handles the admin signup process.
      * Validates input data, creates a new admin account, and redirects to the signin page.
@@ -18,9 +33,6 @@ class AdminAuthController
     {
         $error = '';
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-            $connection = Connection::getConnection();
-            $authRepository = new AdminAuthRepository($connection);
-            $authService = new AdminAuthService($authRepository);
 
             $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
@@ -28,7 +40,7 @@ class AdminAuthController
             $token = htmlspecialchars($_POST['token']);
 
             if ($password == $repeat_password) {
-                $updatePassword = $authService->updatePassword($email, $password, $token);
+                $updatePassword = $this->authService->updatePassword($email, $password, $token);
 
                 if ($updatePassword == null) {
                     $error = 'Token tidak cocok!';
@@ -38,8 +50,6 @@ class AdminAuthController
             } else {
                 $error = 'Password tidak sama!';
             }
-
-            $connection = null;
         }
 
         $model = [
@@ -58,18 +68,15 @@ class AdminAuthController
     {
         $error = '';
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-            $connection = Connection::getConnection();
-            $authRepository = new AdminAuthRepository($connection);
-            $authService = new AdminAuthService($authRepository);
 
             $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
 
-            $token = $authService->checkToken($email);
+            $token = $this->authService->checkToken($email);
 
             if ($token == null) {
                 try {
-                    $admin = $authService->signin($email, $password);
+                    $admin = $this->authService->signin($email, $password);
 
                     if ($admin) {
                         session_start();
@@ -85,8 +92,6 @@ class AdminAuthController
             } else {
                 $error = 'Token belum di aktivasi!';
             }
-
-            $connection = null;
         }
 
         $model = [
