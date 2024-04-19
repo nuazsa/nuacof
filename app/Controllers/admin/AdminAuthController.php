@@ -4,9 +4,7 @@ namespace Nuazsa\Nuacof\Controllers\admin;
 
 use Exception;
 use Nuazsa\Nuacof\View;
-use Nuazsa\Nuacof\Config\Connection;
 use Nuazsa\Nuacof\Services\admin\AdminAuthService;
-use Nuazsa\Nuacof\Repositories\admin\AdminAuthRepository;
 
 class AdminAuthController
 {
@@ -18,11 +16,7 @@ class AdminAuthController
      */
     public function __construct()
     {
-        $connection = Connection::getConnection();
-        $authRepository = new AdminAuthRepository($connection);
-        $this->authService = new AdminAuthService($authRepository);
-
-        $connection = null;
+        $this->authService = new AdminAuthService();
     }
 
     /**
@@ -31,75 +25,81 @@ class AdminAuthController
      */
     public function signup()
     {
-        $error = '';
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-
-            $email = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['password']);
-            $repeat_password = htmlspecialchars($_POST['repeat_password']);
-            $token = htmlspecialchars($_POST['token']);
-
-            if ($password == $repeat_password) {
-                $updatePassword = $this->authService->updatePassword($email, $password, $token);
-
-                if ($updatePassword == null) {
-                    $error = 'Token tidak cocok!';
-                } else {
-                    header('Location: /admin/signin');
-                }
-            } else {
-                $error = 'Password tidak sama!';
-            }
+        session_start();
+        if (isset($_SESSION['admin_email'])) {
+            header('Location: /admin/dashboard');
+            exit();
         }
 
-        $model = [
-            'title' => 'SignUp',
-            'error' => $error
-        ];
-
-        View::render('admin/auth', $model);
+        if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
+            $model = ['title' => 'SignUp'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        $repeat_password = htmlspecialchars($_POST['repeat_password']);
+        $token = htmlspecialchars($_POST['token']);
+    
+        if ($password != $repeat_password) {
+            $model = ['title' => 'SignUp', 'error' => 'Password tidak sama!'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        $updatePassword = $this->authService->updatePassword($email, $password, $token);
+    
+        if ($updatePassword == null) {
+            $model = ['title' => 'SignUp', 'error' => 'Token tidak cocok!'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        header('Location: /admin/signin');
     }
+    
 
     /**
      * Handles the admin signin process.
      * Validates the credentials, starts a session for the admin, and redirects to the dashboard.
      */
     public function signin()
-    {
-        $error = '';
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-
-            $email = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['password']);
-
-            $token = $this->authService->checkToken($email);
-
-            if ($token == null) {
-                try {
-                    $admin = $this->authService->signin($email, $password);
-
-                    if ($admin) {
-                        session_start();
-                        $_SESSION['admin_email'] = $admin['email'];
-                        header('Location: /admin/dashboard');
-                        exit();
-                    } else {
-                        $error = 'Email/Password Salah!';
-                    }
-                } catch (Exception $e) {
-                    $error = 'Terjadi kesalahan: ' . $e->getMessage();
-                }
-            } else {
-                $error = 'Token belum di aktivasi!';
-            }
+    {   
+        session_start();
+        if (isset($_SESSION['admin_email'])) {
+            header('Location: /admin/dashboard');
+            exit();
         }
 
-        $model = [
-            'title' => 'SignIn',
-            'error' => $error
-        ];
+        if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
+            $model = ['title' => 'SignIn'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        
+        $token = $this->authService->checkToken($email);
 
-        View::render('admin/auth', $model);
+        if ($token != null) {
+            $model = ['title' => 'SignIn', 'error' => 'Token belum di aktivasi!'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        $admin = $this->authService->signin($email, $password);
+    
+        if (!$admin) {
+            $model = ['title' => 'SignIn', 'error' => 'Email/Password Salah!'];
+            View::render('admin/auth', $model);
+            return;
+        }
+    
+        $_SESSION['admin_email'] = $admin['email'];
+        header('Location: /admin/dashboard');
+        exit();
     }
 
     /**
@@ -110,6 +110,8 @@ class AdminAuthController
     {
         session_start();
 
+        $this->authService->logout($_SESSION['admin_email']);
+        
         session_unset();
         session_destroy();
 

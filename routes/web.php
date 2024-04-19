@@ -2,6 +2,7 @@
 
 use Nuazsa\Nuacof\Controllers\admin\AdminAuthController;
 use Nuazsa\Nuacof\Controllers\admin\DashboardController;
+use Nuazsa\Nuacof\Controllers\admin\ProductsController;
 use Nuazsa\Nuacof\Router;
 
 // Define routes
@@ -14,8 +15,12 @@ Router::prefix('/admin', function() {
     Router::get('/signin', AdminAuthController::class, 'signin');
     Router::post('/signin', AdminAuthController::class, 'signin');
 
-    Router::get('/dashboard', DashboardController::class, 'index');
     Router::get('/logout', AdminAuthController::class, 'logout');
+
+    Router::get('/dashboard', DashboardController::class, 'index');
+    
+    Router::get('/products', ProductsController::class, 'index');
+
 });
 
 // Running the router to handle requests

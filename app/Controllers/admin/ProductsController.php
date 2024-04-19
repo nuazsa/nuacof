@@ -2,10 +2,10 @@
 
 namespace Nuazsa\Nuacof\Controllers\admin;
 
-use Nuazsa\Nuacof\Services\admin\AdminAuthService;
 use Nuazsa\Nuacof\View;
+use Nuazsa\Nuacof\Services\admin\AdminAuthService;
 
-class DashboardController
+class ProductsController
 {
     private $authService;
 
@@ -20,11 +20,10 @@ class DashboardController
         $admin = $this->authService->getByEmail($_SESSION['admin_email']);
 
         $model = [
-            'title' => 'Dashboard',
+            'title' => 'Products',
             'data' => $admin
         ];
-
-        View::render('admin/dashboard', $model);
+        
+        View::render('admin/products', $model);
     }
 }
-

@@ -28,8 +28,14 @@
                     <?php endif; ?>
 
                     <!-- Email and password inputs -->
-                    <input type="email" id="email" name="email" placeholder="Input your email">
-                    <input type="password" id="password" name="password" placeholder="Input your password">
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" placeholder=" ">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="password" name="password" placeholder=" ">
+                        <label for="password">Password</label>
+                    </div>
                     
                     <!-- Include signup form if the title is "SignUp" -->
                     <?php if (isset($model['title']) && $model['title'] == "SignUp") : ?>
@@ -45,6 +51,7 @@
             </div>
         </div>
     </section>
+
 </body>
 
 </html>

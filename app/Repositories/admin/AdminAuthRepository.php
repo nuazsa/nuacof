@@ -4,21 +4,22 @@ namespace Nuazsa\Nuacof\Repositories\admin;
 
 use PDO;
 use PDOException;
+use Nuazsa\Nuacof\Config\Connection;
 
 /**
  * Repository class for admin authentication related database operations.
  */
 class AdminAuthRepository
 {
-    private $connection;
+    private PDO $connection;
 
     /**
      * Constructor to inject the PDO connection.
      * @param PDO $connection The PDO connection object.
      */
-    public function __construct(PDO $connection)
+    public function __construct()
     {
-        $this->connection = $connection;
+        $this->connection = Connection::getConnection();
     }
 
     /**
@@ -41,43 +42,6 @@ class AdminAuthRepository
     }
 
     /**
-     * Gets the token for the given email.
-     * @param string $email The email of the admin.
-     * @return array|null Returns the token if found, otherwise returns null.
-     * @throws Exception If there is an error executing the query.
-     */
-    public function getTokenVerified($email)
-    {
-        try {
-            $stmt = $this->connection->prepare("SELECT tokenVerified FROM admin WHERE email = :email");
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-
-            return $stmt->fetch();
-        } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
-        }
-    }
-
-    /**
-     * Removes the token for the given email.
-     * @param string $email The email of the admin.
-     * @throws Exception If there is an error executing the query.
-     */
-    public function removeToken($email)
-    {
-        try {
-            $stmt = $this->connection->prepare("UPDATE `admin` SET `tokenVerified`= null WHERE email = :email");
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-
-            return $stmt->fetch();
-        } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
-        }
-    }
-
-    /**
      * Updates the password and token for the given email.
      * @param string $email The email of the admin.
      * @param string $password The new password for the admin.
@@ -89,12 +53,25 @@ class AdminAuthRepository
         try {
             $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
-            $stmt = $this->connection->prepare("UPDATE `admin` SET `password`= :password WHERE email = :email AND tokenVerified = :token");
+            $stmt = $this->connection->prepare("UPDATE `admin` SET `password`= :password, `tokenVerified`= null WHERE email = :email AND tokenVerified = :token");
             $stmt->bindParam(':password', $passwordHash);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':token', $token);
             $stmt->execute();
 
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+        }
+    }
+
+    public function updateStatus($email, $status)
+    {
+        try {
+            $stmt = $this->connection->prepare("UPDATE `admin` SET `status`= :status WHERE email = :email");
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
 
             return $stmt->fetch();
         } catch (PDOException $e) {
