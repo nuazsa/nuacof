@@ -81,6 +81,28 @@ a:hover {
     color: var(--paragraph-color);
 }
 
+
+.status {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 5px 10px;
+    border: 2px solid var(--warning-color);
+    border-radius: 8px;
+}
+
+.status p {
+    color: var(--warning-color);
+}
+
+.completed {
+    border: 2px solid var(--success-color);
+}
+
+.completed p {
+    color: var(--success-color);
+}
+
 .action {
     display: flex;
     justify-content: space-between;
