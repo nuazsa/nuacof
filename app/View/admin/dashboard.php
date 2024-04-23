@@ -16,7 +16,7 @@ require_once 'component/navigation.php';
             <div class="status">
                 <i class="fa-solid fa-caret-up" style="color: green;"></i>
                 <p>
-                <div style="color: green;">4.2%</div>Up from yesterday</p>
+                <div style="color: #43936C;">4.2%</div>Up from yesterday</p>
             </div>
         </div>
         <div class="col">
@@ -30,7 +30,7 @@ require_once 'component/navigation.php';
             <div class="status">
                 <i class="fa-solid fa-caret-down" style="color: red;"></i>
                 <p>
-                <div style="color: red;">4.2%</div>Down from yesterday</p>
+                <div style="color: #E33131;">4.2%</div>Down from yesterday</p>
             </div>
         </div>
         <div class="col">
@@ -44,7 +44,7 @@ require_once 'component/navigation.php';
             <div class="status">
                 <i class="fa-solid fa-caret-down" style="color: red;"></i>
                 <p>
-                <div style="color: red;">4.2%</div>Down from yesterday</p>
+                <div style="color: #E33131;">4.2%</div>Down from yesterday</p>
             </div>
         </div>
         <div class="col">
@@ -58,21 +58,16 @@ require_once 'component/navigation.php';
             <div class="status">
                 <i class="fa-solid fa-caret-up" style="color: green;"></i>
                 <p>
-                <div style="color: green;">4.2%</div>Up from yesterday</p>
+                <div style="color: #43936C;">4.2%</div>Up from yesterday</p>
             </div>
         </div>
     </div>
-    <div class="graph">
+    <div class="graph" style="height: 1000px;">
 
     </div>
 </section>
 
-<script>
-    document.querySelector('.toggle').addEventListener('click', function() {
-        document.querySelector('#sidebar').classList.toggle('collapsed');
-        document.querySelector('#navbar').classList.toggle('collapsed');
-    });
-</script>
+<script src="/js/admin/script.js"></script>
 
 
 </body>

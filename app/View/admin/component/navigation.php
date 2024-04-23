@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin/root.css">
-    <link rel="stylesheet" href="/css/admin/dashboard.css">
+    <link rel="stylesheet" href="/css/admin/navigation.css">
+    <link rel="stylesheet" href="/css/admin/<?= $model['title']; ?>.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title><?= $model['title']; ?></title>
 </head>
@@ -38,19 +39,19 @@
                 <h4>Products</h4>
             </a>
 
-            <a href="orders" class="menu">
+            <a href="orders" class="menu <?= ($model['title'] == 'Orders') ? 'menu-active' : '' ?>">
                 <i class="fa-regular fa-rectangle-list"></i>
                 <h4>Orders</h4>
             </a>
-            <a href="ui" class="menu">
+            <a href="ui" class="menu <?= ($model['title'] == 'UI') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-paintbrush"></i>
                 <h4>UI</h4>
             </a>
-            <a href="manager" class="menu">
+            <a href="manager" class="menu <?= ($model['title'] == 'Manager') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-crown"></i>
                 <h4>Manager</h4>
             </a>
-            <a href="standings" class="menu">
+            <a href="standings" class="menu <?= ($model['title'] == 'Standings') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-arrow-up-wide-short"></i>
                 <h4>Standings</h4>
             </a>
