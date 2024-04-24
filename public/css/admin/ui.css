@@ -1,0 +1,73 @@
+.BannerBoxView,
+.VoucherBoxView {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--background-secondary-color);
+    margin: 20px 0;
+}
+
+.BannerBoxView h4,
+.VoucherBoxView h4 {
+    padding: 10px;
+}
+
+.Banner,
+.Voucher {
+    margin: 10px;
+}
+
+.BannerListView,
+.VoucherListView {
+    display: flex;
+    flex-wrap: wrap; /* Memungkinkan item flex untuk melintasi baris */
+}
+
+.BannerInfo,
+.VoucherInfo {
+    display: flex;  
+    justify-content: space-between;
+}
+.Banner,
+.Voucher {
+    position: relative;
+    display: inline-block;
+}
+
+.BannerInfo,
+.VoucherInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Ubah transparansi sesuai kebutuhan */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s;
+    opacity: 1; /* Sembunyikan BannerInfo secara default */
+}
+
+.VoucherInfo h3 {
+    font-size: 12px;
+}
+
+.Banner:hover .BannerInfo {
+    opacity: 1; /* Tampilkan BannerInfo saat hover pada Banner */
+}
+
+/* .Banner img {
+    width: 100%;
+    height: auto;
+} */
+
+/* .action {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px solid var(--disable-color);
+    border-radius: 8px;
+}
+
+.action i{
+    color: var(--disable-color);
+}    */

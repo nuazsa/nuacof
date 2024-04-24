@@ -21,7 +21,8 @@ class ProductsController
 
         $model = [
             'title' => 'Products',
-            'data' => $admin
+            'data' => $admin,
+            'action' => 'Add new product'
         ];
         
         View::render('admin/products', $model);

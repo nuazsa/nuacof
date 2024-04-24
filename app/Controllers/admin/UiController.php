@@ -5,7 +5,7 @@ namespace Nuazsa\Nuacof\Controllers\admin;
 use Nuazsa\Nuacof\View;
 use Nuazsa\Nuacof\Services\admin\AdminAuthService;
 
-class OrdersController
+class UiController
 {
     private $authService;
 
@@ -20,10 +20,10 @@ class OrdersController
         $admin = $this->authService->getByEmail($_SESSION['admin_email']);
 
         $model = [
-            'title' => 'Orders',
-            'data' => $admin,
-            'action' => 'Date'
+            'title' => 'UI',
+            'data' => $admin
         ];
-        view::render('admin/orders', $model);
+
+        View::render('admin/ui', $model);
     }
 }

@@ -5,30 +5,10 @@ require_once 'component/navigation.php';
 
 <section id="main">
     <h1>PRODUCTS</h1>
-    <div class="ProductFilterSorter">
-        <div class="ProductFilter">
-            <div class="box">
-                <p><i class="fa-solid fa-filter"></i> filter</p>
-            </div>
-            <div class="box">
-                <p>Ascending</p>
-            </div>
-            <div class="box">
-                <p>Descending</p>
-            </div>
-        </div>
-        <div class="ProductSorter">
-            <div class="box">
-                <p>Order By</p>
-            </div>
-            <div class="box">
-                <p style="color: #E33131;">Reset</p>
-            </div>
-        </div>
-        <div class="ProductManager">
-            <p style="color: #03539E;">Add new product</p>
-        </div>
-    </div>
+
+    <?php
+    require_once 'component/filter.php';
+    ?>
 
     <div class="ProductListView">
         <table>
@@ -42,7 +22,7 @@ require_once 'component/navigation.php';
                 <th>Action</th>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 5"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
                 <td>Latte</td>
                 <td>Hot Coffee</td>
                 <td>Rp35.000</td>
@@ -57,7 +37,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 5"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
                 <td>Latte</td>
                 <td>Hot Coffee</td>
                 <td>$4.49</td>
@@ -72,7 +52,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 1"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 1"></td>
                 <td>Robusta Coffee</td>
                 <td>Hot Coffee</td>
                 <td>$5.99</td>
@@ -87,7 +67,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 2"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 2"></td>
                 <td>Arabica Coffee</td>
                 <td>Cold Coffee</td>
                 <td>$6.99</td>
@@ -102,7 +82,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 3"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 3"></td>
                 <td>Espresso</td>
                 <td>Hot Coffee</td>
                 <td>$4.99</td>
@@ -117,7 +97,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 4"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 4"></td>
                 <td>Cappuccino</td>
                 <td>Hot Coffee</td>
                 <td>$5.49</td>
@@ -132,7 +112,7 @@ require_once 'component/navigation.php';
                 </td>
             </tr>
             <tr>
-                <td><img src="/burger.jpeg" width="50px" alt="Coffee 5"></td>
+                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
                 <td>Latte</td>
                 <td>Hot Coffee</td>
                 <td>$4.49</td>
