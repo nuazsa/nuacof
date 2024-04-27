@@ -3,7 +3,10 @@ require_once 'component/navigation.php';
 ?>
 
 <section id="main">
-    <h1>DASHBOARD</h1>
+    <div class="title">
+        <h1>DASHBOARD</h1>
+    </div>
+
     <div class="summary">
         <div class="col">
             <div class="container">

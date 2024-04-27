@@ -1,0 +1,27 @@
+.ListView {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    height: 100px;
+    width: 300px;
+    background-color: var(--background-secondary-color);
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.box h1 {
+    margin: 0;
+    text-align: center;
+    color: var(--disable-color);
+}
+
+.box i {
+    color: var(--disable-color);
+    font-size: 50px;
+}

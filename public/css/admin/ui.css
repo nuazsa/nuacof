@@ -1,6 +1,6 @@
 .BannerBoxView,
 .VoucherBoxView {
-    width: 100%;
+    width: fit-content;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     margin: 20px 0;
@@ -19,7 +19,8 @@
 .BannerListView,
 .VoucherListView {
     display: flex;
-    flex-wrap: wrap; /* Memungkinkan item flex untuk melintasi baris */
+    flex-wrap: wrap;
+    padding: 0 10px;
 }
 
 .BannerInfo,

@@ -1,0 +1,95 @@
+.ProductFilterSorter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ProductFilter,
+.ProductSorter,
+.ProductManager {
+    display: flex;
+}
+
+.ProductFilter p,
+.ProductSorter p,
+.ProductManager p {
+    margin: 0 5px;
+    padding: 5px 30px;
+    border-radius: 8px;
+    background-color: var(--background-secondary-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.ProductListView {
+    margin: 20px 0;
+}
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    margin: 0 5px;
+}
+
+/* Style the table header */
+th {
+    background-color: var(--background-secondary-color);
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style the table rows */
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style the table rows on even numbers */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style the image in the table */
+td.image {
+    width: 100px;
+}
+
+/* Style the action column */
+td.action {
+    text-align: center;
+}
+
+/* Style the table links */
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* Style the table links on hover */
+a:hover {
+    text-decoration: underline;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination p {
+    color: var(--paragraph-color);
+}
+
+.action {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 5px 10px;
+    border: 1px solid var(--disable-color);
+    border-radius: 8px;
+}
+
+.action i{
+    color: var(--disable-color);
+}

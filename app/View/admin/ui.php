@@ -3,7 +3,9 @@ require_once 'component/navigation.php';
 ?>
 
 <section id="main">
-    <h1>UI Management</h1>
+    <div class="title">
+        <h1>UI Management</h1>
+    </div>
 
     <div class="BannerBoxView">
         <h4>Change Banner</h4>
@@ -37,58 +39,60 @@ require_once 'component/navigation.php';
     <div class="VoucherBoxView">
         <h4>Change Voucher</h4>
         <hr>
-        <div class="Voucher">
-            <img src="/images/bmkg.png" width="200px" alt="">
-            <div class="VoucherInfo">
-                <h3>Voucher Welcome</h3>
-                <div class="action">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-box"></i>
-                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+        <div class="BannerListView">
+            <div class="Voucher">
+                <img src="/images/bmkg.png" width="200px" alt="">
+                <div class="VoucherInfo">
+                    <h3>Voucher Welcome</h3>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="Voucher">
-            <img src="/images/bmkg.png" width="200px" alt="">
-            <div class="VoucherInfo">
-                <h3>Voucher Welcome</h3>
-                <div class="action">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-box"></i>
-                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+            <div class="Voucher">
+                <img src="/images/bmkg.png" width="200px" alt="">
+                <div class="VoucherInfo">
+                    <h3>Voucher Welcome</h3>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="Voucher">
-            <img src="/images/bmkg.png" width="200px" alt="">
-            <div class="VoucherInfo">
-                <h3>Voucher Welcome</h3>
-                <div class="action">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-box"></i>
-                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+            <div class="Voucher">
+                <img src="/images/bmkg.png" width="200px" alt="">
+                <div class="VoucherInfo">
+                    <h3>Voucher Welcome</h3>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="Voucher">
-            <img src="/images/bmkg.png" width="200px" alt="">
-            <div class="VoucherInfo">
-                <h3>Voucher Welcome</h3>
-                <div class="action">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-box"></i>
-                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+            <div class="Voucher">
+                <img src="/images/bmkg.png" width="200px" alt="">
+                <div class="VoucherInfo">
+                    <h3>Voucher Welcome</h3>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="Voucher">
-            <img src="/images/bmkg.png" width="200px" alt="">
-            <div class="VoucherInfo">
-                <h3>Voucher Welcome</h3>
-                <div class="action">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-box"></i>
-                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+            <div class="Voucher">
+                <img src="/images/bmkg.png" width="200px" alt="">
+                <div class="VoucherInfo">
+                    <h3>Voucher Welcome</h3>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                    </div>
                 </div>
             </div>
         </div>

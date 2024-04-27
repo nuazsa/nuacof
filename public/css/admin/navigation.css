@@ -114,6 +114,6 @@
     transition: margin-left 0.3s ease;
 }
 
-#main h1:first-child {
+#main .title {
     margin-bottom: 20px;
 }

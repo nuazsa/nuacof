@@ -4,7 +4,9 @@ require_once 'component/navigation.php';
 
 
 <section id="main">
-    <h1>PRODUCTS</h1>
+    <div class="title">
+        <h1>PRODUCTS</h1>
+    </div>
 
     <?php
     require_once 'component/filter.php';

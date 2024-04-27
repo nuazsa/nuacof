@@ -1,11 +1,13 @@
 <?php
 
 use Nuazsa\Nuacof\Router;
+use Nuazsa\Nuacof\Controllers\admin\UiController;
 use Nuazsa\Nuacof\Controllers\admin\OrdersController;
+use Nuazsa\Nuacof\Controllers\admin\ManagerController;
 use Nuazsa\Nuacof\Controllers\admin\ProductsController;
 use Nuazsa\Nuacof\Controllers\admin\AdminAuthController;
 use Nuazsa\Nuacof\Controllers\admin\DashboardController;
-use Nuazsa\Nuacof\Controllers\admin\UiController;
+use Nuazsa\Nuacof\Controllers\admin\UserController;
 
 // Define routes
 Router::prefix('/admin', function() {
@@ -26,6 +28,10 @@ Router::prefix('/admin', function() {
     Router::get('/orders', OrdersController::class, 'index');
 
     Router::get('/ui', UiController::class, 'index');
+
+    Router::get('/manager', ManagerController::class, 'index');
+
+    Router::get('/standings', UserController::class, 'standings');
 });
 
 // Running the router to handle requests
