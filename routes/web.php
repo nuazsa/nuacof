@@ -24,6 +24,8 @@ Router::prefix('/admin', function() {
     Router::get('/dashboard', DashboardController::class, 'index');
     
     Router::get('/products', ProductsController::class, 'index');
+    Router::get('/addproduct', ProductsController::class, 'addproduct');
+    Router::get('/editproduct', ProductsController::class, 'editproduct');
 
     Router::get('/orders', OrdersController::class, 'index');
 

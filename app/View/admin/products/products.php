@@ -1,5 +1,5 @@
 <?php
-require_once 'component/navigation.php';
+require_once __DIR__ . '/../component/navigation.php';
 ?>
 
 
@@ -9,7 +9,7 @@ require_once 'component/navigation.php';
     </div>
 
     <?php
-    require_once 'component/filter.php';
+    require_once __DIR__ . '/../component/filter.php';
     ?>
 
     <div class="ProductListView">
@@ -32,7 +32,7 @@ require_once 'component/navigation.php';
                 <td>Size - Variant - Sugar - Ice</td>
                 <td>
                     <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <a href="editproduct"><i class="fa-regular fa-pen-to-square"></a></i>
                         <i class="fa-solid fa-box"></i>
                         <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
                     </div>

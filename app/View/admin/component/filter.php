@@ -19,6 +19,6 @@
         </div>
     </div>
     <div class="ProductManager">
-        <p style="color: #03539E;"><?= $model['action']; ?></p>
+        <a href="addproduct" style="color: #03539E;"><?= $model['action']; ?></a>
     </div>
 </div>

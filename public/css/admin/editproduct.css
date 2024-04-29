@@ -1,0 +1,99 @@
+.container {
+    background-color: var(--background-secondary-color);
+    border-radius: 8px
+}
+
+.row,
+label.image {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.col {
+    flex: 1;
+    margin-right: 10px;
+}
+
+label {
+    font-size: 14px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select {
+    border: 1px solid #ccc;
+    background-color: white; /* Warna latar belakang */
+    color: #333; /* Warna teks */
+    cursor: pointer; /* Kursor berbentuk panah saat di atas elemen */
+}
+
+input::placeholder {
+    padding: 0 10px;
+    color: #A6A6A6;
+}
+
+select {
+    padding: 10px;
+    color: #A6A6A6;
+}
+
+#main form,
+#main .CustomizeList {
+    padding: 20px;
+}
+
+.CustomizeList p {
+    padding: 5px 0;
+}
+
+#main label,
+form .col {
+    display: flex;
+}
+
+#main input,
+#main select,
+#main .Costumize {
+    margin-bottom: 10px;
+}
+
+#main .required {
+    color: var(--danger-color);
+}
+
+button {
+    width: 100%;
+    padding: 5px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a.edit,
+a.delete {
+    text-decoration: none;
+}
+
+.edit a {
+    color: var(--info-color);
+}
+
+.delete {
+    color: var(--danger-color);
+}

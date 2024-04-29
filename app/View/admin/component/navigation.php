@@ -34,7 +34,8 @@
                 <i class="fa-solid fa-layer-group"></i>
                 <h4>Dashboard</h4>
             </a>
-            <a href="products" class="menu <?= ($model['title'] == 'Products') ? 'menu-active' : '' ?>">
+            <a href="products" class="menu <?= ($model['title'] == 'Products' || $model['title'] == 'AddProduct' || $model['title'] == 'EditProduct') ? 'menu-active' : '' ?>
+">
                 <i class="fa-solid fa-martini-glass-citrus"></i>
                 <h4>Products</h4>
             </a>

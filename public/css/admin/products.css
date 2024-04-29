@@ -11,7 +11,7 @@
 
 .ProductFilter p,
 .ProductSorter p,
-.ProductManager p {
+.ProductManager a {
     margin: 0 5px;
     padding: 5px 30px;
     border-radius: 8px;
@@ -65,11 +65,6 @@ td.action {
 a {
     color: blue;
     text-decoration: none;
-}
-
-/* Style the table links on hover */
-a:hover {
-    text-decoration: underline;
 }
 
 .pagination {
