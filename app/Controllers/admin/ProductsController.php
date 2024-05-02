@@ -16,7 +16,6 @@ class ProductsController
 
     public function index() 
     {
-        $this->authService->checkLoggedIn();
         $admin = $this->authService->getByEmail($_SESSION['admin_email']);
 
         $model = [
@@ -30,9 +29,27 @@ class ProductsController
 
     public function addproduct() 
     {
-        if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" || isset($_POST['submit'])) {
+            $uploadImage = $_FILES['uploadImage'];
+            $productName = htmlspecialchars($_POST['productName']);
+            $price = htmlspecialchars($_POST['price']);
+            $discount = htmlspecialchars($_POST['discount']);
+            $piece = htmlspecialchars($_POST['piece']);
+            $description = htmlspecialchars($_POST['description']);
+            $category = htmlspecialchars($_POST['category']);
 
-            $this->authService->checkLoggedIn();
+            $data = [
+                'uploadImage' => $uploadImage,
+                'Name' => $productName,
+                'Price' => $price,
+                'Discount' => $discount,
+                'Piece' => $piece,
+                'Description' => $description,
+                'Category' => $category
+            ];
+
+            print_r($data);
+        } else {
             $admin = $this->authService->getByEmail($_SESSION['admin_email']);
     
             $model = [
@@ -42,14 +59,13 @@ class ProductsController
 
             View::render('admin/products/add', $model);
             return;
+
         }
     }
 
     public function editproduct() 
     {
         if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
-
-            $this->authService->checkLoggedIn();
             $admin = $this->authService->getByEmail($_SESSION['admin_email']);
     
             $model = [

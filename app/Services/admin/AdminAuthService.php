@@ -95,15 +95,4 @@ class AdminAuthService
             echo "Terjadi kesalahan: " . $e->getMessage();
         }
     }
-    
-
-    public function checkLoggedIn()
-    {
-        session_start();
-
-        if (!isset($_SESSION['admin_email'])) {
-            header("Location: /admin/signin");
-            exit();
-        }
-    }
 }

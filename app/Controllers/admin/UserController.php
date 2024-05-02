@@ -18,7 +18,6 @@ class UserController
     {
         if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
 
-            $this->authService->checkLoggedIn();
             $admin = $this->authService->getByEmail($_SESSION['admin_email']);
     
             $model = [

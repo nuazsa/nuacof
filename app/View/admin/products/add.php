@@ -10,14 +10,14 @@ require_once __DIR__ . '/../component/navigation.php';
     <div class="container">
         <div class="row">
             <div class="container">
-                <form action="" method="get" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <!-- Label yang terhubung dengan input file -->
                     <label class="image" for="uploadImage">
                         <!-- Gambar dengan gaya tambahan -->
-                        <img src="/images/burger.jpeg" width="70px" style="border-radius: 50%; cursor: pointer;" alt="Burger Image">
+                        <img src="/" width="70px" height="70px" style="border-radius: 50%; cursor: pointer; background-color:black;" alt="Burger Image">
                     </label>
                     <!-- Input file yang disembunyikan dari tampilan -->
-                    <input type="file" id="uploadImage" style="display: none;">
+                    <input type="file" id="uploadImage" name="uploadImage" style="display: none;">
                     <p>Upload Photo</p>
             </div>
         </div>

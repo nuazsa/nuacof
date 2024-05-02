@@ -16,7 +16,6 @@ class DashboardController
 
     public function index() 
     {
-        $this->authService->checkLoggedIn();
         $admin = $this->authService->getByEmail($_SESSION['admin_email']);
 
         $model = [
