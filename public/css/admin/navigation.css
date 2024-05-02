@@ -6,7 +6,6 @@
     background-color: var(--background-secondary-color);
     padding: 0 20px;
     margin-left: 4%;
-    width: 93%;
     height: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -51,8 +50,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 15%;
-    height: 100vh;
+    height: 100%;
     background-color: var(--background-secondary-color);
     z-index: 99;
     box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.1);
@@ -116,4 +114,25 @@
 
 #main .title {
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        justify-content: right;
+    }
+
+    #navbar .search {
+        display: none;
+    }
+    #navbar,
+    #main {
+        margin-left: 8%;
+    }
+}
+
+@media (max-width: 425px) {
+    #navbar,
+    #main {
+        margin-left: 14%;
+    }
 }

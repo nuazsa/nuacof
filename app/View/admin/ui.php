@@ -12,7 +12,7 @@ require_once 'component/navigation.php';
         <hr>
         <div class="BannerListView">
             <div class="Banner">
-                <img src="/images/bmkg.png" width="400px" alt="">
+                <img src="/images/bmkg.png" alt="">
                 <div class="BannerInfo">
                     <h3>Banner Welcome</h3>
                     <div class="action">
@@ -23,7 +23,7 @@ require_once 'component/navigation.php';
                 </div>
             </div>
             <div class="Banner">
-                <img src="/images/bmkg.png" width="400px" alt="">
+                <img src="/images/bmkg.png" alt="">
                 <div class="BannerInfo">
                     <h3>Banner Welcome</h3>
                     <div class="action">

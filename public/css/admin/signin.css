@@ -105,3 +105,15 @@ button {
 button:hover {
     background-color: #4891B4;
 }
+
+@media (max-width: 768px) {
+    section {
+        flex-direction: column;    
+        margin: 0 20px
+    }
+    
+    section .col {
+        width: 100%; /* Mengisi lebar container */
+        margin: 5px 0; /* Mengatur margin atas dan bawah */
+    }
+}

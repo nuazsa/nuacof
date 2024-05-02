@@ -13,7 +13,9 @@
 
 <body>
     <section id="navbar">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
         <div class="user">
             <i class="fa-regular fa-bell"></i>
             <div class="account">

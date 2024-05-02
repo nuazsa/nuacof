@@ -22,7 +22,7 @@ class ProductsController
         $model = [
             'title' => 'Products',
             'data' => $admin,
-            'action' => 'Add new product'
+            'action' => 'New product'
         ];
         
         View::render('admin/products/products', $model);

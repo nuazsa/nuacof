@@ -1,13 +1,13 @@
 <div class="ProductFilterSorter">
     <div class="ProductFilter">
         <div class="box">
-            <p><i class="fa-solid fa-filter"></i> filter</p>
+            <i class="fa-solid fa-filter"></i>
         </div>
         <div class="box">
-            <p>Ascending</p>
+            <p>Asc</p>
         </div>
         <div class="box">
-            <p>Descending</p>
+            <p>Desc</p>
         </div>
     </div>
     <div class="ProductSorter">

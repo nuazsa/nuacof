@@ -1,30 +1,8 @@
-.ProductFilterSorter {
-    display: flex;
-    justify-content: space-between;
-}
-
-.ProductFilter,
-.ProductSorter,
-.ProductManager {
-    display: flex;
-}
-
-.ProductFilter p,
-.ProductSorter p,
-.ProductManager p {
-    margin: 0 5px;
-    padding: 5px 30px;
-    border-radius: 8px;
-    background-color: var(--background-secondary-color);
-    cursor: pointer;
-    font-weight: bold;
-}
-
+/* CSS untuk tampilan default */
 .ProductListView {
     margin: 20px 0;
 }
 
-/* Style the table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -32,7 +10,6 @@ table {
     margin: 0 5px;
 }
 
-/* Style the table header */
 th {
     background-color: var(--background-secondary-color);
     text-align: left;
@@ -40,36 +17,13 @@ th {
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows */
 td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows on even numbers */
 tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-/* Style the image in the table */
-td.image {
-    width: 100px;
-}
-
-/* Style the action column */
-td.action {
-    text-align: center;
-}
-
-/* Style the table links */
-a {
-    color: blue;
-    text-decoration: none;
-}
-
-/* Style the table links on hover */
-a:hover {
-    text-decoration: underline;
 }
 
 .pagination {
@@ -81,15 +35,48 @@ a:hover {
     color: var(--paragraph-color);
 }
 
-.action {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    padding: 5px 10px;
-    border: 1px solid var(--disable-color);
-    border-radius: 8px;
-}
+/* CSS untuk tampilan responsif */
+@media (max-width: 768px) {
+    table {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
 
-.action i{
-    color: var(--disable-color);
+    th,
+    td {
+        display: block;
+        padding: 10px;
+        text-align: left;
+        width: 100%;
+    }
+
+    th {
+        display: none;
+        background-color: var(--background-secondary-color);
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr {
+        margin-bottom: 10px;
+    }
+
+    .ProductListView td:first-child {
+        background-color: #c8e6c9;
+        /* Ubah warna sesuai kebutuhan */
+    }
+
+    /* Menyembunyikan kolom yang tidak ingin ditampilkan */
+    table td[data-label="Date"],
+    table td[data-label="Amount"] {
+        display: none;
+    }
+
+    td[data-label]:before {
+        content: attr(data-label) ": ";
+        margin-right: 5px;
+    }
 }

@@ -47,7 +47,8 @@ select {
 }
 
 #main form,
-#main .CustomizeList {
+#main .CustomizeList,
+#main .ProductInput {
     padding: 20px;
 }
 

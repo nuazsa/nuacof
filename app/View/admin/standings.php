@@ -19,27 +19,27 @@ require_once 'component/navigation.php';
             </tr>
             <tr>
                 <td>1</td>
-                <td>Nur Azis Prasetyo</td>
-                <td>12 Jan 2023</td>
-                <td>Rp100.000</td>
-                <td>500</td>
-                <td>Flaying Scholar</td>
+                <td data-label="Name">Nur Azis Prasetyo</td>
+                <td data-label="Date">12 Jan 2023</td>
+                <td data-label="Amount">Rp100.000</td>
+                <td data-label="Exp">500</td>
+                <td data-label="Level">Flaying Scholar</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Nur Azis Prasetyo</td>
-                <td>12 Jan 2023</td>
-                <td>Rp100.000</td>
-                <td>490</td>
-                <td>Flaying Scholar</td>
+                <td data-label="Name">Nur Azis Prasetyo</td>
+                <td data-label="Date">12 Jan 2023</td>
+                <td data-label="Amount">Rp100.000</td>
+                <td data-label="Exp">500</td>
+                <td data-label="Level">Flaying Scholar</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>Nur Azis Prasetyo</td>
-                <td>12 Jan 2023</td>
-                <td>Rp100.000</td>
-                <td>470</td>
-                <td>Flaying Scholar</td>
+                <td data-label="Name">Nur Azis Prasetyo</td>
+                <td data-label="Date">12 Jan 2023</td>
+                <td data-label="Amount">Rp100.000</td>
+                <td data-label="Exp">500</td>
+                <td data-label="Level">Flaying Scholar</td>
             </tr>
         </table>
     </div>

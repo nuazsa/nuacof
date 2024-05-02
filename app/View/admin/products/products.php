@@ -25,11 +25,11 @@ require_once __DIR__ . '/../component/navigation.php';
             </tr>
             <tr>
                 <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
-                <td>Latte</td>
-                <td>Hot Coffee</td>
-                <td>Rp35.000</td>
-                <td>10</td>
-                <td>Size - Variant - Sugar - Ice</td>
+                <td data-label="Name">Arabica Coffee</td>
+                <td data-label="Category">Hot Coffee</td>
+                <td data-label="Price">Rp35.000</td>
+                <td data-label="Piece">10</td>
+                <td data-label="Variant">Size - Variant - Sugar - Ice</td>
                 <td>
                     <div class="action">
                         <a href="editproduct"><i class="fa-regular fa-pen-to-square"></a></i>

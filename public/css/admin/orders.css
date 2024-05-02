@@ -10,14 +10,14 @@
 }
 
 .ProductFilter p,
+.ProductFilter i,
 .ProductSorter p,
-.ProductManager p {
-    margin: 0 5px;
+.ProductManager a {
+    margin: 5px;
     padding: 5px 30px;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     cursor: pointer;
-    font-weight: bold;
 }
 
 .ProductListView {
@@ -67,11 +67,6 @@ a {
     text-decoration: none;
 }
 
-/* Style the table links on hover */
-a:hover {
-    text-decoration: underline;
-}
-
 .pagination {
     display: flex;
     justify-content: space-between;
@@ -80,7 +75,6 @@ a:hover {
 .pagination p {
     color: var(--paragraph-color);
 }
-
 
 .status {
     display: flex;
@@ -113,5 +107,85 @@ a:hover {
 }
 
 .action i{
+    padding: 0 5px;
     color: var(--disable-color);
+}
+
+@media (max-width: 768px) {
+    .ProductFilter p,
+    .ProductFilter i,
+    .ProductSorter p,
+    .ProductManager a {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .ProductFilterSorter {
+        flex-direction: column;
+    }
+
+    table {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        display: block;
+        width: 90%;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        display: none;
+        background-color: var(--background-secondary-color);
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    td.image {
+        width: 100px;
+        grid-column: 1 / 2;
+    }
+
+    td.action {
+        text-align: center;
+        grid-column: 2 / 3;
+    }
+
+    td[data-label]:before {
+        content: attr(data-label) ": ";
+        margin-right: 5px;
+    }
+
+    .status {
+        border: 1px solid var(--warning-color);
+    }
+    
+    .completed {
+        border: 1px solid var(--success-color);
+    }
+}
+
+@media (max-width: 425px) {
+    .ProductFilter i {
+        display: none;
+    }
+
+    tr {
+        display: block;
+    }
 }

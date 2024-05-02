@@ -13,7 +13,7 @@ require_once 'component/navigation.php';
             <i class="fa-solid fa-key"></i>
         </div>
         <div class="box">
-            <h1>Admin Management </h1>
+            <h1>Admin</h1>
             <i class="fa-solid fa-user-tie"></i>
         </div>
     </div>

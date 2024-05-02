@@ -3,7 +3,7 @@
     width: fit-content;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
-    margin: 20px 0;
+    margin-bottom: 30px;
 }
 
 .BannerBoxView h4,
@@ -25,9 +25,10 @@
 
 .BannerInfo,
 .VoucherInfo {
-    display: flex;  
+    display: flex;
     justify-content: space-between;
 }
+
 .Banner,
 .Voucher {
     position: relative;
@@ -40,12 +41,14 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Ubah transparansi sesuai kebutuhan */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Ubah transparansi sesuai kebutuhan */
     color: white;
     padding: 10px;
     text-align: center;
     transition: background-color 0.3s;
-    opacity: 1; /* Sembunyikan BannerInfo secara default */
+    opacity: 1;
+    /* Sembunyikan BannerInfo secara default */
 }
 
 .VoucherInfo h3 {
@@ -53,22 +56,36 @@
 }
 
 .Banner:hover .BannerInfo {
-    opacity: 1; /* Tampilkan BannerInfo saat hover pada Banner */
+    opacity: 1;
+    /* Tampilkan BannerInfo saat hover pada Banner */
 }
 
-/* .Banner img {
-    width: 100%;
+.Banner img {
+    width: 400px;
     height: auto;
-} */
-
-/* .action {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border: 1px solid var(--disable-color);
-    border-radius: 8px;
 }
 
-.action i{
-    color: var(--disable-color);
-}    */
+
+@media (max-width: 768px) {
+    .Banner img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .Voucher img {
+        width: 100%;
+    }
+
+    .BannerInfo,
+    .VoucherInfo {
+        padding: 5px;
+    }
+
+    .BannerInfo h3,
+    .VoucherInfo h3,
+    .BannerInfo i,
+    .VoucherInfo i {
+        font-size: 12px;
+    }
+}

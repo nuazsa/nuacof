@@ -10,21 +10,20 @@
 }
 
 .ProductFilter p,
+.ProductFilter i,
 .ProductSorter p,
 .ProductManager a {
-    margin: 0 5px;
+    margin: 5px;
     padding: 5px 30px;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     cursor: pointer;
-    font-weight: bold;
 }
 
 .ProductListView {
     margin: 20px 0;
 }
 
-/* Style the table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -32,7 +31,6 @@ table {
     margin: 0 5px;
 }
 
-/* Style the table header */
 th {
     background-color: var(--background-secondary-color);
     text-align: left;
@@ -40,28 +38,23 @@ th {
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows */
 td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows on even numbers */
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Style the image in the table */
 td.image {
     width: 100px;
 }
 
-/* Style the action column */
 td.action {
     text-align: center;
 }
 
-/* Style the table links */
 a {
     color: blue;
     text-decoration: none;
@@ -85,6 +78,81 @@ a {
     border-radius: 8px;
 }
 
-.action i{
+.action i {
+    padding: 0 5px;
     color: var(--disable-color);
+}
+
+@media (max-width: 768px) {
+
+    .ProductFilter p,
+    .ProductFilter i,
+    .ProductSorter p,
+    .ProductManager a {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .ProductFilterSorter {
+        flex-direction: column;
+    }
+
+    table {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        display: flex;
+        width: 90%;
+        padding: 8px;
+        text-align: left;
+        align-items: center;
+    }
+
+    th {
+        display: none;
+        background-color: var(--background-secondary-color);
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    td.image {
+        width: 100px;
+        grid-column: 1 / 2;
+    }
+
+    td.action {
+        text-align: center;
+        grid-column: 2 / 3;
+    }
+
+    td[data-label]:before {
+        content: attr(data-label) ": ";
+        margin-right: 5px;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .ProductFilter i {
+        display: none;
+    }
+
+    tr {
+        display: block;
+    }
 }
