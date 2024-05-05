@@ -21,8 +21,8 @@
             <div class="account">
                 <i class="fa-solid fa-circle-user"></i>
                 <div class="info">
-                    <h4><?= $model['data']['name']; ?></h4>
-                    <p><?= $model['data']['role']; ?></p>
+                    <h4><?= $_SESSION['admin']['name']; ?></h4>
+                    <p><?= $_SESSION['admin']['role']; ?></p>
                 </div>
             </div>
         </div>
@@ -32,33 +32,33 @@
             <div class="toggle">
                 <i class="fa-solid fa-bars"></i>
             </div>
-            <a href="dashboard" class="menu <?= ($model['title'] == 'Dashboard') ? 'menu-active' : '' ?>">
+            <a href="/admin/dashboard" class="menu <?= ($model['title'] == 'Dashboard') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-layer-group"></i>
                 <h4>Dashboard</h4>
             </a>
-            <a href="products" class="menu <?= ($model['title'] == 'Products' || $model['title'] == 'AddProduct' || $model['title'] == 'EditProduct') ? 'menu-active' : '' ?>
+            <a href="/admin/products" class="menu <?= ($model['title'] == 'Products' || $model['title'] == 'AddProduct' || $model['title'] == 'EditProduct') ? 'menu-active' : '' ?>
 ">
                 <i class="fa-solid fa-martini-glass-citrus"></i>
                 <h4>Products</h4>
             </a>
 
-            <a href="orders" class="menu <?= ($model['title'] == 'Orders') ? 'menu-active' : '' ?>">
+            <a href="/admin/orders" class="menu <?= ($model['title'] == 'Orders') ? 'menu-active' : '' ?>">
                 <i class="fa-regular fa-rectangle-list"></i>
                 <h4>Orders</h4>
             </a>
-            <a href="ui" class="menu <?= ($model['title'] == 'UI') ? 'menu-active' : '' ?>">
+            <a href="/admin/ui" class="menu <?= ($model['title'] == 'UI') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-paintbrush"></i>
                 <h4>UI</h4>
             </a>
-            <a href="manager" class="menu <?= ($model['title'] == 'Manager') ? 'menu-active' : '' ?>">
+            <a href="/admin/manager" class="menu <?= ($model['title'] == 'Manager') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-crown"></i>
                 <h4>Manager</h4>
             </a>
-            <a href="standings" class="menu <?= ($model['title'] == 'Standings') ? 'menu-active' : '' ?>">
+            <a href="/admin/standings" class="menu <?= ($model['title'] == 'Standings') ? 'menu-active' : '' ?>">
                 <i class="fa-solid fa-arrow-up-wide-short"></i>
                 <h4>Standings</h4>
             </a>
-            <a href="logout" class="menu">
+            <a href="/admin/logout" class="menu">
                 <i class="fa-solid fa-power-off"></i>
                 <h4>Logout</h4>
             </a>

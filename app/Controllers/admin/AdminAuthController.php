@@ -97,7 +97,12 @@ class AdminAuthController
             return;
         }
     
-        $_SESSION['admin_email'] = $admin['email'];
+        $_SESSION['admin'] = [
+            'email' => $admin['email'],
+            'name' => $admin['name'],
+            'role' => $admin['role']
+        ];
+        
         header('Location: /admin/dashboard');
         exit();
     }

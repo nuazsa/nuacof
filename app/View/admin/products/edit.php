@@ -4,45 +4,54 @@ require_once __DIR__ . '/../component/navigation.php';
 
 <section id="main">
     <div class="title">
-        <h1>EDIT PRODUCT</h1>
+        <h1>ADD NEW PRODUCT</h1>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="container">
-                <!-- Label yang terhubung dengan input file -->
-                <label class="image" for="uploadImage">
-                    <!-- Gambar dengan gaya tambahan -->
-                    <img src="/images/burger.jpeg" width="70px" style="border-radius: 50%; cursor: pointer;" alt="Burger Image">
-                </label>
-                <!-- Input file yang disembunyikan dari tampilan -->
-                <input type="file" id="uploadImage" style="display: none;">
-                <p>Upload Photo</p>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <!-- Label yang terhubung dengan input file -->
+                    <label class="image" for="uploadImage">
+                        <!-- Gambar dengan gaya tambahan -->
+                        <img id="previewImage" src="/images/uploads/products/<?= $model['product']['image']; ?>" width="70px" height="70px" style="border-radius: 50%; cursor: pointer; background-color: #D9D9D9;">
+                    </label>
+                    <!-- Input file yang disembunyikan dari tampilan -->
+                    <input type="file" id="uploadImage" name="uploadImage" style="display: none;">
+                    <input type="hidden" id="lastImage" name="lastImage" style="display: none;" value="<?= $model['product']['image']; ?>">
+                    <p>Upload Photo</p>
             </div>
         </div>
 
 
         <div class="row">
             <div class="col">
-                <form action="" method="post">
+                <div class="ProductInput">
                     <label for="productName">Product Name<div class="required">*</div></label>
-                    <input type="text" id="productName" name="productName" placeholder="Enter product name">
+                    <input type="text" id="productName" name="productName" value="<?= $model['product']['name']; ?>">
                     <label for="price">Price<div class="required">*</div></label>
-                    <input type="text" id="price" name="price" placeholder="Enter product price">
+                    <input type="text" id="price" name="price" value="<?= $model['product']['price']; ?>">
                     <label for="discount">Discount</label>
-                    <input type="text" id="discount" name="discount" placeholder="Enter product discount">
+                    <input type="text" id="discount" name="discount" value="<?= $model['product']['discount']; ?>">
                     <label for="piece">Piece<div class="required">*</div></label>
-                    <input type="text" id="piece" name="piece" placeholder="Enter product piece">
+                    <input type="text" id="piece" name="piece" value="<?= $model['product']['piece']; ?>">
                     <label for="description">Description<div class="required">*</div></label>
-                    <input type="text" id="description" name="description" placeholder="Enter product description">
+                    <input type="text" id="description" name="description" value="<?= $model['product']['description']; ?>">
                     <label for="category">Category<div class="required">*</div></label>
                     <select name="category">
-                        <option value="Coffee">Coffee</option>
-                        <option value="Food">Food</option>
-                        <option value="Snack">Snack</option>
+                        <option value="Coffee" <?= ($model['product']['category'] == 'Coffee') ? 'selected' : ''; ?>>Coffee</option>
+                        <option value="Food" <?= ($model['product']['category'] == 'Food') ? 'selected' : ''; ?>>Food</option>
+                        <option value="Snack"  <?= ($model['product']['category'] == 'Snack') ? 'selected' : ''; ?>>Snack</option>
                     </select>
-                    <button>Add Now</button>
-                </form>
+                    <label for="status">Status<div class="required">*</div></label>
+                    <select name="status">
+                        <option value="active" <?= ($model['product']['status'] == 'active') ? 'selected' : ''; ?>>Active</option>
+                        <option value="draft" <?= ($model['product']['status'] == 'draft') ? 'selected' : ''; ?>>Draft</option>
+                        <option value="empty" <?= ($model['product']['status'] == 'empty') ? 'selected' : ''; ?>>Empty</option>
+                    </select>
+                    <button onclick="return confirm('Update product! Continue?');">Update Now</button>
+                    </form>
+                </div>
             </div>
             <div class="col">
                 <form action="" method="get">
@@ -93,6 +102,24 @@ require_once __DIR__ . '/../component/navigation.php';
 </section>
 
 <script src="/js/admin/script.js"></script>
+
+<script>
+    // Ambil elemen input file dan gambar
+    const input = document.getElementById('uploadImage');
+    const preview = document.getElementById('previewImage');
+
+    // Tambahkan event listener untuk input file
+    input.addEventListener('change', function() {
+        const file = this.files[0]; // Ambil file yang dipilih
+        if (file) {
+            const reader = new FileReader(); // Buat objek FileReader
+            reader.onload = function() {
+                preview.src = reader.result; // Ubah src gambar dengan data URL dari file
+            };
+            reader.readAsDataURL(file); // Membaca file sebagai URL data
+        }
+    })
+</script>
 
 
 </body>

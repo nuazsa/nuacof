@@ -6,13 +6,15 @@
 .row,
 label.image {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
-.col {
+.col,
+button {
     flex: 1;
-    margin-right: 10px;
+    margin: 0 20px;
 }
 
 label {
@@ -20,9 +22,11 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
+    font-family: 'Poppins', sans-serif;
     width: 100%;
-    padding: 10px;
+    padding: 10px 10px;
     margin-top: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -30,29 +34,23 @@ select {
 }
 
 select {
-    border: 1px solid #ccc;
-    background-color: white; /* Warna latar belakang */
-    color: #333; /* Warna teks */
-    cursor: pointer; /* Kursor berbentuk panah saat di atas elemen */
+    cursor: pointer;
 }
 
-input::placeholder {
+textarea {
+    height: 50px;
+}
+
+select,
+input::placeholder,
+textarea::placeholder {
     color: #A6A6A6;
 }
 
-select {
-    padding: 10px;
-    color: #A6A6A6;
-}
-
-#main form,
-#main .CustomizeList,
 #main .ProductInput {
-    padding: 20px;
-}
-
-.CustomizeList p {
-    padding: 5px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 #main label,
@@ -62,7 +60,7 @@ form .col {
 
 #main input,
 #main select,
-#main .Costumize {
+#main button {
     margin-bottom: 10px;
 }
 
@@ -85,15 +83,15 @@ button:hover {
     background-color: #0056b3;
 }
 
-a.edit,
-a.delete {
-    text-decoration: none;
-}
+@media only screen and (max-width: 768px) {
+    #main .ProductInput {
+        display: block;
+    }
 
-.edit a {
-    color: var(--info-color);
-}
-
-.delete {
-    color: var(--danger-color);
+    input,
+    select,
+    textarea {
+        padding: 10px 0px;
+        padding-left: 5px;
+    }
 }

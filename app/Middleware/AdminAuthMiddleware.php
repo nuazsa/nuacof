@@ -8,7 +8,7 @@ class AdminAuthMiddleware implements Middleware
     function before(): void
     {
         session_start();
-        if (!isset($_SESSION['admin_email'])) {
+        if (!isset($_SESSION['admin']['email'])) {
             header('Location: /admin/signin');
             exit;
         }

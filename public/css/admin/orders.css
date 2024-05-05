@@ -10,7 +10,7 @@
 }
 
 .ProductFilter p,
-.ProductFilter i,
+.ProductSorter i,
 .ProductSorter p,
 .ProductManager a {
     margin: 5px;
@@ -113,7 +113,7 @@ a {
 
 @media (max-width: 768px) {
     .ProductFilter p,
-    .ProductFilter i,
+    .ProductSorter i,
     .ProductSorter p,
     .ProductManager a {
         font-size: 12px;

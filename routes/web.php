@@ -25,9 +25,13 @@ Router::prefix('/admin', function() {
     Router::get('/dashboard', DashboardController::class, 'index', [AdminAuthMiddleware::class]);
     
     Router::get('/products', ProductsController::class, 'index', [AdminAuthMiddleware::class]);
+    Router::post('/products', ProductsController::class, 'index', [AdminAuthMiddleware::class]);
     Router::get('/addproduct', ProductsController::class, 'addproduct', [AdminAuthMiddleware::class]);
     Router::post('/addproduct', ProductsController::class, 'addproduct', [AdminAuthMiddleware::class]);
-    Router::get('/editproduct', ProductsController::class, 'editproduct', [AdminAuthMiddleware::class]);
+    Router::get('/editproduct/([0-9]*)', ProductsController::class, 'editproduct', [AdminAuthMiddleware::class]);
+    Router::post('/editproduct/([0-9]*)', ProductsController::class, 'editproduct', [AdminAuthMiddleware::class]);
+    Router::get('/removeproduct/([0-9]*)', ProductsController::class, 'removeproduct', [AdminAuthMiddleware::class]);
+    Router::get('/draftproduct/([0-9]*)', ProductsController::class, 'draftproduct', [AdminAuthMiddleware::class]);
 
     Router::get('/orders', OrdersController::class, 'index', [AdminAuthMiddleware::class]);
 
@@ -40,3 +44,5 @@ Router::prefix('/admin', function() {
 
 // Running the router to handle requests
 Router::run();
+
+// ([0-9a-zA-Z]*)/([0-9]*) regex

@@ -9,19 +9,20 @@
     display: flex;
 }
 
-.ProductFilter p,
-.ProductFilter i,
-.ProductSorter p,
-.ProductManager a {
+.ProductSorter i,
+.ProductManager a,
+select,
+button {
     margin: 5px;
     padding: 5px 30px;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     cursor: pointer;
+    border: none;
 }
 
 .ProductListView {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 table {
@@ -47,16 +48,11 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-td.image {
-    width: 100px;
-}
-
 td.action {
     text-align: center;
 }
 
 a {
-    color: blue;
     text-decoration: none;
 }
 
@@ -74,20 +70,38 @@ a {
     justify-content: space-between;
     width: 60%;
     padding: 5px 10px;
-    border: 1px solid var(--disable-color);
+    border: 1px solid var(--no-active-color);
     border-radius: 8px;
+}
+
+.action i,
+button {
+    color: var(--no-active-color);
+}
+.action i:hover,
+button:hover {
+    color: var(--block-color);
+}
+
+button.selected {
+    color: var(--block-color);
 }
 
 .action i {
     padding: 0 5px;
-    color: var(--disable-color);
+}
+
+.action i.warning {
+    color: var(--warning-color);
+}
+
+.action i.danger {
+    color: var(--danger-color);
 }
 
 @media (max-width: 768px) {
 
-    .ProductFilter p,
-    .ProductFilter i,
-    .ProductSorter p,
+    .ProductSorter i,
     .ProductManager a {
         font-size: 12px;
         white-space: nowrap;
@@ -99,7 +113,6 @@ a {
 
     table {
         overflow-x: auto;
-        white-space: nowrap;
     }
 
     th,

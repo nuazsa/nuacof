@@ -13,130 +13,58 @@ require_once __DIR__ . '/../component/navigation.php';
     ?>
 
     <div class="ProductListView">
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Piece</th>
-                <th>Avalible Costumize</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
-                <td data-label="Name">Arabica Coffee</td>
-                <td data-label="Category">Hot Coffee</td>
-                <td data-label="Price">Rp35.000</td>
-                <td data-label="Piece">10</td>
-                <td data-label="Variant">Size - Variant - Sugar - Ice</td>
-                <td>
-                    <div class="action">
-                        <a href="editproduct"><i class="fa-regular fa-pen-to-square"></a></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
-                <td>Latte</td>
-                <td>Hot Coffee</td>
-                <td>$4.49</td>
-                <td>10</td>
-                <td>No</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 1"></td>
-                <td>Robusta Coffee</td>
-                <td>Hot Coffee</td>
-                <td>$5.99</td>
-                <td>10</td>
-                <td>Yes</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 2"></td>
-                <td>Arabica Coffee</td>
-                <td>Cold Coffee</td>
-                <td>$6.99</td>
-                <td>15</td>
-                <td>No</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 3"></td>
-                <td>Espresso</td>
-                <td>Hot Coffee</td>
-                <td>$4.99</td>
-                <td>8</td>
-                <td>Yes</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 4"></td>
-                <td>Cappuccino</td>
-                <td>Hot Coffee</td>
-                <td>$5.49</td>
-                <td>12</td>
-                <td>Yes</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="/images/burger.jpeg" width="50px" alt="Coffee 5"></td>
-                <td>Latte</td>
-                <td>Hot Coffee</td>
-                <td>$4.49</td>
-                <td>10</td>
-                <td>No</td>
-                <td>
-                    <div class="action">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <i class="fa-solid fa-box"></i>
-                        <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
-                    </div>
-                </td>
-            </tr>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Piece</th>
+                    <th>Avalible Costumize</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <?php
+                for ($i = 0; $i < count($model['product']); $i++) :
+                ?>
+                    <tr>
+                        <td><img src="/images/uploads/products/<?= $model['product'][$i]['image']; ?>" width="50px" alt="<?= $model['product'][$i]['image']; ?>"></td>
+                        <td data-label="Name"><?= $model['product'][$i]['name']; ?></td>
+                        <td data-label="Category"><?= $model['product'][$i]['category']; ?></td>
+                        <td data-label="Price">Rp.<?= number_format($model['product'][$i]['price'], 0, ',', '.'); ?></td>
+                        <td data-label="Piece"><?= $model['product'][$i]['piece']; ?></td>
+                        <td data-label="Variant">Size - Variant - Sugar - Ice</td>
+                        <td>
+                            <div class="action">
+                                <a href="editproduct/<?= $model['product'][$i]['id']; ?>"><i class="fa-regular fa-pen-to-square"></a></i>
+                                <a href="draftproduct/<?= $model['product'][$i]['id']; ?>" onclick="return confirm('Change Status! Continue?');">
+                                    <i class="fa-solid fa-box <?= ($model['product'][$i]['status'] == 'draft') ? 'warning' : '' ?><?= ($model['product'][$i]['status'] == 'empty') ? 'danger' : '' ?>"></i>
+                                </a>
+                                <a href="removeproduct/<?= $model['product'][$i]['id']; ?>" class="fa-solid fa-trash-can" style="color: #E33131;"></a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php
+                endfor;
+                ?>
+            </tbody>
         </table>
     </div>
     <div class="pagination">
-        <p>Showing 1-5 of 30</p>
-        <div class="pagination-buttons">
-            <button>&lt;</button>
-            <button>&gt;</button>
-        </div>
+    <p>Showing <?= min($model['pagination'] + 1, $model['count']); ?>-<?= min($model['pagination'] + 5, $model['count']); ?> of <?= $model['count']; ?></p>
+        <form action="" method="post">
+            <div class="pagination-buttons">
+                <button class="" type="submit" name="pagination" value="-">
+                    <i class="fa-solid fa-angles-left"></i>
+                </button>
+                <button class="" type="submit" name="pagination" value="+">
+                    <i class="fa-solid fa-angles-right"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </section>
 
