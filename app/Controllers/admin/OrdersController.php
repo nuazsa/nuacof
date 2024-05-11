@@ -14,6 +14,7 @@ class OrdersController
     {
         $model = [
             'title' => 'Orders',
+            'css' => 'orders',
             'action' => 'Date'
         ];
         view::render('admin/orders', $model);

@@ -1,26 +1,25 @@
 <?php
 
-namespace Nuazsa\Nuacof\Services\admin;
+namespace Nuazsa\Nuacof\Services;
 
 use Exception;
-use Nuazsa\Nuacof\Config\Connection;
-use Nuazsa\Nuacof\Repositories\admin\AdminAuthRepository;
+use Nuazsa\Nuacof\Repositories\AdminRepository;
 
 /**
  * Service class for handling admin authentication logic.
  */
 class AdminAuthService
 {
-    protected $AdminAuthRepository;
+    protected $AdminRepository;
 
     /**
      * Constructor for AdminAuthService.
      *
-     * @param AdminAuthRepository $AdminAuthRepository The repository for admin authentication.
+     * @param AdminRepository $AdminRepository The repository for admin authentication.
      */
     public function __construct()
     {
-        $this->AdminAuthRepository = new AdminAuthRepository;
+        $this->AdminRepository = new AdminRepository;
     }
 
     /**
@@ -33,10 +32,10 @@ class AdminAuthService
      */
     public function signin($email, $password)
     {
-        $admin = $this->AdminAuthRepository->findByEmail($email);
+        $admin = $this->AdminRepository->findByEmail($email);
 
         $status = "active";
-        $this->AdminAuthRepository->updateStatus($email, $status);
+        $this->AdminRepository->updateStatus($email, $status);
 
         if ($admin && password_verify($password, $admin['password'])) {
             return $admin;
@@ -48,11 +47,11 @@ class AdminAuthService
     public function logout($email) 
     {
         $status = "not active";
-        $this->AdminAuthRepository->updateStatus($email, $status);
+        $this->AdminRepository->updateStatus($email, $status);
     }
 
     public function getByEmail($email){
-        $id = $this->AdminAuthRepository->findByEmail($email);
+        $id = $this->AdminRepository->findByEmail($email);
         return $id;
     }
 
@@ -65,7 +64,7 @@ class AdminAuthService
      */
     public function checkToken($email)
     {
-        $token = $this->AdminAuthRepository->findByEmail($email);
+        $token = $this->AdminRepository->findByEmail($email);
 
         if ($token && $token['tokenVerified']) {
             return $token;
@@ -86,7 +85,7 @@ class AdminAuthService
         try {
             $token_data = $this->checkToken($email);
             if ($token_data && $token == $token_data['tokenVerified']) {
-                $this->AdminAuthRepository->updatePasswordAndToken($email, $password, $token);
+                $this->AdminRepository->updatePasswordAndToken($email, $password, $token);
                 return true;
             } else {
                 return null;

@@ -51,6 +51,7 @@ class ProductsController
 
         $model = [
             'title' => 'Products',
+            'css' => 'Products',
             'product' => $product,
             'count' => $count,
             'filter' => $this->filter,
@@ -76,7 +77,7 @@ class ProductsController
             $status = htmlspecialchars($_POST['status']);
 
             $image = $this->productService->uploadImage($image);
-            $result = $this->productService->addProduct($name, $description, $category, $price, $piece, $image, $discount, $status);
+            $result = $this->productService->addProduct($name, $description, $category, $price, $piece, $image, $status, $discount);
 
             if ($result) {
                 header('Location: /admin/products');
@@ -91,7 +92,8 @@ class ProductsController
         } else {
 
             $model = [
-                'title' => 'AddProduct',
+                'title' => 'Add Product',
+                'css' => 'addproduct'
             ];
 
             View::render('admin/products/add', $model);
@@ -119,23 +121,29 @@ class ProductsController
                 $image = $this->productService->uploadImage($image);
                 
             }
-            $result = $this->productService->updateProduct($id, $name, $description, $category, $price, $piece, $image, $discount, $status);
+            
+            $result = $this->productService->updateProduct($id, $name, $description, $category, $price, $piece, $image, $status, $discount);
 
             if ($result) {
-                // Redirect ke halaman sukses
-                header('Location: /admin/products');
+                echo "
+                <script>
+                    alert('Product successfully edited!');
+                    window.location.href = '/admin/products';
+                </script>
+                ";
             } else {
                 echo "
-                    <script>
-                        alert('Gagal menambahkan product!');
-                        window.location.href = '/admin/products';
-                    </script>
+                <script>
+                    alert('Failed to edit product!');
+                    window.location.href = '/admin/products';
+                </script>
                 ";
             }
         } else {
             $product = $this->productService->getProduct($id);
             $model = [
-                'title' => 'EditProduct',
+                'title' => 'Edit Product',
+                'css' => 'addproduct',
                 'product' => $product
             ];
 
@@ -149,13 +157,18 @@ class ProductsController
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             $result = $this->productService->removeProduct($id);
             if ($result) {
-                header('Location: /admin/products');
+                echo "
+                <script>
+                    alert('Product successfully deleted!');
+                    window.location.href = '/admin/products';
+                </script>
+                ";
             } else {
                 echo "
-                    <script>
-                        alert('Failed to delete product!');
-                        window.location.href = '/admin/products';
-                    </script>
+                <script>
+                    alert('Failed to delete product!');
+                    window.location.href = '/admin/products';
+                </script>
                 ";
             }
         }

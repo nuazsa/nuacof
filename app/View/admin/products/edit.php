@@ -4,7 +4,7 @@ require_once __DIR__ . '/../component/navigation.php';
 
 <section id="main">
     <div class="title">
-        <h1>ADD NEW PRODUCT</h1>
+        <h1>EDIT PRODUCT</h1>
     </div>
 
     <div class="container">
@@ -23,25 +23,28 @@ require_once __DIR__ . '/../component/navigation.php';
             </div>
         </div>
 
-
         <div class="row">
-            <div class="col">
-                <div class="ProductInput">
+            <div class="ProductInput">
+                <div class="col">
                     <label for="productName">Product Name<div class="required">*</div></label>
                     <input type="text" id="productName" name="productName" value="<?= $model['product']['name']; ?>">
                     <label for="price">Price<div class="required">*</div></label>
-                    <input type="text" id="price" name="price" value="<?= $model['product']['price']; ?>">
+                    <input type="number" id="price" name="price" value="<?= $model['product']['price']; ?>">
                     <label for="discount">Discount</label>
-                    <input type="text" id="discount" name="discount" value="<?= $model['product']['discount']; ?>">
+                    <input type="number" id="discount" name="discount" value="<?= $model['product']['discount']; ?>">
+                </div>
+                <div class="col">
                     <label for="piece">Piece<div class="required">*</div></label>
-                    <input type="text" id="piece" name="piece" value="<?= $model['product']['piece']; ?>">
+                    <input type="number" id="piece" name="piece" value="<?= $model['product']['piece']; ?>">
                     <label for="description">Description<div class="required">*</div></label>
-                    <input type="text" id="description" name="description" value="<?= $model['product']['description']; ?>">
+                    <textarea name="description" id="description"><?= $model['product']['description']; ?></textarea>
+                </div>
+                <div class="col">
                     <label for="category">Category<div class="required">*</div></label>
                     <select name="category">
                         <option value="Coffee" <?= ($model['product']['category'] == 'Coffee') ? 'selected' : ''; ?>>Coffee</option>
                         <option value="Food" <?= ($model['product']['category'] == 'Food') ? 'selected' : ''; ?>>Food</option>
-                        <option value="Snack"  <?= ($model['product']['category'] == 'Snack') ? 'selected' : ''; ?>>Snack</option>
+                        <option value="Snack" <?= ($model['product']['category'] == 'Snack') ? 'selected' : ''; ?>>Snack</option>
                     </select>
                     <label for="status">Status<div class="required">*</div></label>
                     <select name="status">
@@ -49,55 +52,66 @@ require_once __DIR__ . '/../component/navigation.php';
                         <option value="draft" <?= ($model['product']['status'] == 'draft') ? 'selected' : ''; ?>>Draft</option>
                         <option value="empty" <?= ($model['product']['status'] == 'empty') ? 'selected' : ''; ?>>Empty</option>
                     </select>
-                    <button onclick="return confirm('Update product! Continue?');">Update Now</button>
-                    </form>
                 </div>
             </div>
-            <div class="col">
-                <form action="" method="get">
-                    <label for="avalibleCustomize">Avalible Customize</label>
-                    <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter product customize">
+        </div>
+        <div class="row">
+            <button onclick="return confirm('Update product! Continue?');">Update Now</button>
+            </form>
+        </div>
+    </div>
 
-                    <div class="col">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter type customize">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter price">
-                    </div>
-                    <div class="col">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter type customize">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter price">
-                    </div>
-                    <div class="col">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter type customize">
-                        <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter price">
-                    </div>
+    <div class="container">
+        <div class="row">
 
-                    <button>Add Customize</button>
-                </form>
-            </div>
-            <div class="col">
-                <div class="CustomizeList">
+            <div class="ProductInput">
+                <div class="col">
+                    <form action="" method="POST">
+                        <div class="row">
+                            <label for="avalibleCustomize">Avalible Customize</label>
+                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter product customize">
+                        </div>
+                        <div class="row">
+                            <label for="avaliblzeCustomize">Customize Type</label>
+                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter type customize">
+                            <label for="avalibleCustomize">Customize Price</label>
+                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter price">
+                        </div>
+                </div>
+                <div class="col">
                     <div class="Costumize">
                         <p style="color: green; font-weight: bold;">1. Size -></p>
-                        <p>Regular: Rp0, <br>Medium: Rp3.000 , <br>Large: Rp6.000</p>
+                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
                         <a href="edit" class="edit">edit</a>
                         <a href="delete" class="delete">delete</a>
                     </div>
                     <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">2. Variant -></p>
-                        <p>Regular: Rp0, <br>Medium: Rp3.000 , <br>Large: Rp6.000</p>
+                        <p style="color: green; font-weight: bold;">1. Size -></p>
+                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
                         <a href="edit" class="edit">edit</a>
                         <a href="delete" class="delete">delete</a>
                     </div>
                     <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">3. Sugar -></p>
-                        <p>Regular: Rp0, <br>Medium: Rp3.000 , <br>Large: Rp6.000</p>
+                        <p style="color: green; font-weight: bold;">1. Size -></p>
+                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
+                        <a href="edit" class="edit">edit</a>
+                        <a href="delete" class="delete">delete</a>
+                    </div>
+                    <div class="Costumize">
+                        <p style="color: green; font-weight: bold;">1. Size -></p>
+                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
                         <a href="edit" class="edit">edit</a>
                         <a href="delete" class="delete">delete</a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <button onclick="return confirm('Update product! Continue?');">Update Now</button>
+            </form>
+        </div>
     </div>
+
 
 </section>
 

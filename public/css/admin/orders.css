@@ -9,22 +9,22 @@
     display: flex;
 }
 
-.ProductFilter p,
 .ProductSorter i,
-.ProductSorter p,
-.ProductManager a {
+.ProductManager a,
+select,
+button {
     margin: 5px;
-    padding: 5px 30px;
+    padding: 5px 20px;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     cursor: pointer;
+    border: none;
 }
 
 .ProductListView {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
-/* Style the table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -32,7 +32,6 @@ table {
     margin: 0 5px;
 }
 
-/* Style the table header */
 th {
     background-color: var(--background-secondary-color);
     text-align: left;
@@ -40,30 +39,20 @@ th {
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows */
 td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Style the table rows on even numbers */
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Style the image in the table */
-td.image {
-    width: 100px;
-}
-
-/* Style the action column */
 td.action {
     text-align: center;
 }
 
-/* Style the table links */
 a {
-    color: blue;
     text-decoration: none;
 }
 
@@ -74,47 +63,46 @@ a {
 
 .pagination p {
     color: var(--paragraph-color);
-}
-
-.status {
+    align-items: center;
     display: flex;
-    justify-content: center;
-    width: 60%;
-    padding: 5px 10px;
-    border: 2px solid var(--warning-color);
-    border-radius: 8px;
-}
-
-.status p {
-    color: var(--warning-color);
-}
-
-.completed {
-    border: 2px solid var(--success-color);
-}
-
-.completed p {
-    color: var(--success-color);
 }
 
 .action {
     display: flex;
-    justify-content: space-between;
-    width: 60%;
+    justify-content: space-around;
     padding: 5px 10px;
-    border: 1px solid var(--disable-color);
+    border: 1px solid var(--no-active-color);
     border-radius: 8px;
 }
 
-.action i{
+.action i,
+button {
+    color: var(--no-active-color);
+}
+.action i:hover,
+button:hover {
+    color: var(--block-color);
+}
+
+button.selected {
+    color: var(--block-color);
+}
+
+.action i {
     padding: 0 5px;
-    color: var(--disable-color);
+}
+
+.action i.warning {
+    color: var(--warning-color);
+}
+
+.action i.danger {
+    color: var(--danger-color);
 }
 
 @media (max-width: 768px) {
-    .ProductFilter p,
+
     .ProductSorter i,
-    .ProductSorter p,
     .ProductManager a {
         font-size: 12px;
         white-space: nowrap;
@@ -126,15 +114,15 @@ a {
 
     table {
         overflow-x: auto;
-        white-space: nowrap;
     }
 
     th,
     td {
-        display: block;
+        display: flex;
         width: 90%;
         padding: 8px;
         text-align: left;
+        align-items: center;
     }
 
     th {
@@ -171,13 +159,6 @@ a {
         margin-right: 5px;
     }
 
-    .status {
-        border: 1px solid var(--warning-color);
-    }
-    
-    .completed {
-        border: 1px solid var(--success-color);
-    }
 }
 
 @media (max-width: 425px) {

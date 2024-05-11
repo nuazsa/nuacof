@@ -37,14 +37,14 @@ class ProductService
         return $total;
     }
 
-    public function addProduct($name, $description, $category, $price, $piece, $image, $discount, $status)
+    public function addProduct($name, $description, $category, $price, $piece, $image, $status, $discount)
     {
-        return $this->productRepository->insertProduct($name, $description, $category, $price, $piece, $image, $discount, $status);
+        return $this->productRepository->insertProduct($name, $description, $category, $price, $piece, $image, $status, $discount);
     }
 
-    public function updateProduct($id, $name, $description, $category, $price, $piece, $image, $discount, $status)
+    public function updateProduct($id, $name, $description, $category, $price, $piece, $image, $status, $discount)
     {
-        return $this->productRepository->updateProduct($id, $name, $description, $category, $price, $piece, $image, $discount, $status);
+        return $this->productRepository->updateProduct($id, $name, $description, $category, $price, $piece, $image, $status, $discount);
     }
 
     public function draftProduct($id)

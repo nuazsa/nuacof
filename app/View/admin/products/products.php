@@ -39,11 +39,15 @@ require_once __DIR__ . '/../component/navigation.php';
                         <td data-label="Variant">Size - Variant - Sugar - Ice</td>
                         <td>
                             <div class="action">
-                                <a href="editproduct/<?= $model['product'][$i]['id']; ?>"><i class="fa-regular fa-pen-to-square"></a></i>
+                                <a href="editproduct/<?= $model['product'][$i]['id']; ?>">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </a>
                                 <a href="draftproduct/<?= $model['product'][$i]['id']; ?>" onclick="return confirm('Change Status! Continue?');">
                                     <i class="fa-solid fa-box <?= ($model['product'][$i]['status'] == 'draft') ? 'warning' : '' ?><?= ($model['product'][$i]['status'] == 'empty') ? 'danger' : '' ?>"></i>
                                 </a>
-                                <a href="removeproduct/<?= $model['product'][$i]['id']; ?>" class="fa-solid fa-trash-can" style="color: #E33131;"></a>
+                                <a href="removeproduct/<?= $model['product'][$i]['id']; ?>">
+                                    <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -54,7 +58,7 @@ require_once __DIR__ . '/../component/navigation.php';
         </table>
     </div>
     <div class="pagination">
-    <p>Showing <?= min($model['pagination'] + 1, $model['count']); ?>-<?= min($model['pagination'] + 5, $model['count']); ?> of <?= $model['count']; ?></p>
+        <p>Showing <?= min($model['pagination'] + 1, $model['count']); ?>-<?= min($model['pagination'] + 5, $model['count']); ?> of <?= $model['count']; ?></p>
         <form action="" method="post">
             <div class="pagination-buttons">
                 <button class="" type="submit" name="pagination" value="-">

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nuazsa\Nuacof\Repositories\admin;
+namespace Nuazsa\Nuacof\Repositories;
 
 use PDO;
 use PDOException;
@@ -9,9 +9,9 @@ use Nuazsa\Nuacof\Config\Connection;
 /**
  * Repository class for admin authentication related database operations.
  */
-class AdminAuthRepository
+class AdminRepository
 {
-    private PDO $connection;
+    private $connection;
 
     /**
      * Constructor to inject the PDO connection.

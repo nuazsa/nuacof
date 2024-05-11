@@ -16,6 +16,7 @@ class UiController
 
         $model = [
             'title' => 'UI',
+            'css' => 'ui'
         ];
 
         View::render('admin/ui', $model);

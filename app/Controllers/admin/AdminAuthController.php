@@ -4,7 +4,7 @@ namespace Nuazsa\Nuacof\Controllers\admin;
 
 use Exception;
 use Nuazsa\Nuacof\View;
-use Nuazsa\Nuacof\Services\admin\AdminAuthService;
+use Nuazsa\Nuacof\Services\AdminAuthService;
 
 class AdminAuthController
 {
@@ -80,7 +80,7 @@ class AdminAuthController
     
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
-        
+
         $token = $this->authService->checkToken($email);
 
         if ($token != null) {

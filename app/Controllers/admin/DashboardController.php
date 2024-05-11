@@ -16,6 +16,7 @@ class DashboardController
 
         $model = [
             'title' => 'Dashboard',
+            'css' => 'dashboard'
         ];
 
         View::render('admin/dashboard', $model);

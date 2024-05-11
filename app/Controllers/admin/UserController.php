@@ -3,7 +3,7 @@
 namespace Nuazsa\Nuacof\Controllers\admin;
 
 use Nuazsa\Nuacof\View;
-use Nuazsa\Nuacof\Services\admin\AdminAuthService;
+use Nuazsa\Nuacof\Services\AdminAuthService;
 
 class UserController
 {
@@ -11,18 +11,16 @@ class UserController
 
     public function __construct()
     {
-        $this->authService = new AdminAuthService();
+        $this->authService = new AdminAuthService;
     }
 
     public function standings() 
     {
         if ($_SERVER["REQUEST_METHOD"] != "POST" || !isset($_POST['submit'])) {
 
-            $admin = $this->authService->getByEmail($_SESSION['admin_email']);
-    
             $model = [
                 'title' => 'Standings',
-                'data' => $admin
+                'css' => 'standings'
             ];
 
             View::render('admin/standings', $model);

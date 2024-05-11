@@ -1,6 +1,7 @@
 .container {
     background-color: var(--background-secondary-color);
-    border-radius: 8px
+    border-radius: 8px;
+    margin: 20px 0;
 }
 
 .row,
@@ -83,8 +84,35 @@ button:hover {
     background-color: #0056b3;
 }
 
+
+form p {
+    color: var(--info-color);
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a.edit,
+a.delete {
+    text-decoration: none;
+}
+
+.edit a {
+    color: var(--info-color);
+}
+
+.delete {
+    color: var(--danger-color);
+}
+
+.Costumize {
+    padding: 5px 0;
+}
+
 @media only screen and (max-width: 768px) {
-    #main .ProductInput {
+    #main .ProductInput,
+    #main .col {
         display: block;
     }
 

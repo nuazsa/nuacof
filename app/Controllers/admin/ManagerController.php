@@ -15,6 +15,7 @@ class ManagerController
 
         $model = [
             'title' => 'Manager',
+            'css' => 'manager'
         ];
         view::render('admin/manager', $model);
     }

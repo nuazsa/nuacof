@@ -7,11 +7,13 @@ use Dotenv\Dotenv;
 
 class Connection
 {
+    private static $pdo;
+    
     /**
- * Get a PDO database connection using environment variables.
- *
- * @return PDO A PDO database connection instance.
- */
+     * Get a PDO database connection using environment variables.
+     *
+     * @return PDO A PDO database connection instance.
+     */
     public static function getConnection()
     {
         // Load environment variables from the .env file
@@ -26,7 +28,13 @@ class Connection
         $username = $_ENV['DB_USER'];
         $password = $_ENV['DB_PASSWORD'];
 
+        if (!self::$pdo) {
+            // Create PDO connection if it doesn't exist
+            // Your connection code here
+            self::$pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+        }
+
         // Create and return a new PDO database connection instance
-        return new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+        return self::$pdo;
     }
 }

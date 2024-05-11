@@ -14,7 +14,7 @@
 select,
 button {
     margin: 5px;
-    padding: 5px 30px;
+    padding: 5px 20px;
     border-radius: 8px;
     background-color: var(--background-secondary-color);
     cursor: pointer;
@@ -63,12 +63,13 @@ a {
 
 .pagination p {
     color: var(--paragraph-color);
+    align-items: center;
+    display: flex;
 }
 
 .action {
     display: flex;
-    justify-content: space-between;
-    width: 60%;
+    justify-content: space-around;
     padding: 5px 10px;
     border: 1px solid var(--no-active-color);
     border-radius: 8px;
