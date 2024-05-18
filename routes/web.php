@@ -29,8 +29,11 @@ Router::prefix('/admin', function() {
     Router::get('/addproduct', ProductsController::class, 'addproduct', [AdminAuthMiddleware::class]);
     Router::post('/addproduct', ProductsController::class, 'addproduct', [AdminAuthMiddleware::class]);
     Router::get('/editproduct/([0-9]*)', ProductsController::class, 'editproduct', [AdminAuthMiddleware::class]);
+    Router::get('/editproduct/([0-9]*)/([0-9]*)', ProductsController::class, 'editcustomize', [AdminAuthMiddleware::class]);
+    Router::post('/editproduct/([0-9]*)/([0-9]*)', ProductsController::class, 'editcustomize', [AdminAuthMiddleware::class]);
     Router::post('/editproduct/([0-9]*)', ProductsController::class, 'editproduct', [AdminAuthMiddleware::class]);
     Router::get('/removeproduct/([0-9]*)', ProductsController::class, 'removeproduct', [AdminAuthMiddleware::class]);
+    Router::get('/removecustomize/([0-9]*)/([0-9]*)', ProductsController::class, 'removecustomize', [AdminAuthMiddleware::class]);
     Router::get('/draftproduct/([0-9]*)', ProductsController::class, 'draftproduct', [AdminAuthMiddleware::class]);
 
     Router::get('/orders', OrdersController::class, 'index', [AdminAuthMiddleware::class]);

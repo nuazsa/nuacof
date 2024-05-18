@@ -77,7 +77,7 @@ class ProductService
             echo "
                 <script>
                     alert('Select an image first');
-                    window.location.href = '/admin/addproduct';
+                    window.location.href = '/admin/products';
                 </script>
             ";
             exit;
@@ -92,7 +92,7 @@ class ProductService
             echo "
                 <script>
                     alert('Select an image with JPG, JPEG, or PNG format');
-                    window.location.href = '/admin/addproduct';
+                    window.location.href = '/admin/products';
                 </script>
             ";
             exit;
@@ -103,7 +103,7 @@ class ProductService
             echo "
                 <script>
                     alert('Image size is too large (maximum 1MB)');
-                    window.location.href = '/admin/addproduct';
+                    window.location.href = '/admin/products';
                 </script>
             ";
             exit;

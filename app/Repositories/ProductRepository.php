@@ -5,6 +5,7 @@ namespace Nuazsa\Nuacof\Repositories;
 use PDO;
 use PDOException;
 use Nuazsa\Nuacof\Config\Connection;
+use Exception;
 
 class ProductRepository
 {
@@ -12,34 +13,47 @@ class ProductRepository
 
     /**
      * Constructor to inject the PDO connection.
-     * @param PDO $connection The PDO connection object.
      */
     public function __construct()
     {
         $this->connection = Connection::getConnection();
     }
 
+    /**
+     * Get all products with optional filtering and ordering.
+     * @param string $filter The column to filter by.
+     * @param string $order The order direction (ASC or DESC).
+     * @param int $offset The offset for pagination.
+     * @return array The product data.
+     * @throws Exception If the query execution fails.
+     */
     public function getAllProduct($filter = 'id', $order = 'DESC', $offset = 0)
     {
         try {
-            $allowedColumns = ['id', 'name', 'category', 'name', 'price', 'piece', 'status', 'updatedAt'];
+            $allowedColumns = ['id', 'name', 'category', 'price', 'piece', 'status', 'updatedAt'];
             $filter = in_array($filter, $allowedColumns) ? $filter : 'id';
 
             $order = in_array(strtoupper($order), ['ASC', 'DESC']) ? $order : 'DESC';
 
             $offset = filter_var($offset, FILTER_VALIDATE_INT);
-            $offset = ($offset !== false && $offset > 0) ? $offset : 0;
-    
+            $offset = ($offset !== false && $offset >= 0) ? $offset : 0;
+
             $sql = "SELECT * FROM products ORDER BY $filter $order, id DESC LIMIT 5 OFFSET $offset";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
 
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Get product by ID.
+     * @param int $id The product ID.
+     * @return array The product data.
+     * @throws Exception If the query execution fails.
+     */
     public function getProductById($id)
     {
         try {
@@ -49,24 +63,40 @@ class ProductRepository
 
             return $stmt->fetch();
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Get total number of products.
+     * @return array The total number of products.
+     * @throws Exception If the query execution fails.
+     */
     public function getTotalProduct()
     {
         try {
             $stmt = $this->connection->prepare("SELECT count(*) as total FROM products");
             $stmt->execute();
 
-            // var_dump($stmt->fetch()); exit;
             return $stmt->fetch();
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
-    
 
+    /**
+     * Insert a new product.
+     * @param string $name The product name.
+     * @param string $description The product description.
+     * @param string $category The product category.
+     * @param float $price The product price.
+     * @param int $piece The product piece count.
+     * @param string $image The product image URL.
+     * @param float $discount The product discount.
+     * @param string $status The product status.
+     * @return bool True if the insertion is successful.
+     * @throws Exception If the query execution fails.
+     */
     public function insertProduct($name, $description, $category, $price, $piece, $image, $discount, $status)
     {
         try {
@@ -84,10 +114,24 @@ class ProductRepository
 
             return $stmt->execute();
         } catch (\Throwable $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Update an existing product.
+     * @param int $id The product ID.
+     * @param string $name The product name.
+     * @param string $description The product description.
+     * @param string $category The product category.
+     * @param float $price The product price.
+     * @param int $piece The product piece count.
+     * @param string $image The product image URL.
+     * @param string $status The product status.
+     * @param float|null $discount The product discount.
+     * @return bool True if the update is successful.
+     * @throws Exception If the query execution fails.
+     */
     public function updateProduct($id, $name, $description, $category, $price, $piece, $image, $status, $discount = null)
     {
         try {
@@ -100,8 +144,7 @@ class ProductRepository
                 image = :image, 
                 discount = :discount, 
                 status = :status
-            WHERE id = :id
-            ");
+            WHERE id = :id");
 
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':name', $name);
@@ -115,10 +158,17 @@ class ProductRepository
 
             return $stmt->execute();
         } catch (\Throwable $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Update the status of a product to draft.
+     * @param int $id The product ID.
+     * @param string $status The new status.
+     * @return bool True if the update is successful.
+     * @throws Exception If the query execution fails.
+     */
     public function draftProduct(int $id, string $status)
     {
         try {
@@ -128,10 +178,16 @@ class ProductRepository
 
             return $stmt->execute();
         } catch (\Throwable $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Delete a product by ID.
+     * @param int $id The product ID.
+     * @return bool True if the deletion is successful.
+     * @throws Exception If the query execution fails.
+     */
     public function deleteProduct(int $id)
     {
         try {
@@ -140,7 +196,8 @@ class ProductRepository
 
             return $stmt->execute();
         } catch (\Throwable $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 }
+

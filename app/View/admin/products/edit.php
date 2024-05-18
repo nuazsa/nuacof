@@ -56,7 +56,7 @@ require_once __DIR__ . '/../component/navigation.php';
             </div>
         </div>
         <div class="row">
-            <button onclick="return confirm('Update product! Continue?');">Update Now</button>
+            <button name="submit" onclick="return confirm('Update product! Continue?');">Update Now</button>
             </form>
         </div>
     </div>
@@ -69,45 +69,57 @@ require_once __DIR__ . '/../component/navigation.php';
                     <form action="" method="POST">
                         <div class="row">
                             <label for="avalibleCustomize">Avalible Customize</label>
-                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter product customize">
+                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter product customize. ex(SIZE)" value="<?= isset($model['customize']['name']) ? $model['customize']['name'] : ''; ?>" required>
                         </div>
                         <div class="row">
-                            <label for="avaliblzeCustomize">Customize Type</label>
-                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter type customize">
-                            <label for="avalibleCustomize">Customize Price</label>
-                            <input type="text" id="avalibleCustomize" name="avalibleCustomize" placeholder="Enter price">
+                            <div class="col">
+                                <label for="customizeType">Customize Type</label>
+                            </div>
+                            <div class="col">
+                                <label for="customizePrice">Customize Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" id="customizeType1" name="customizeType[]" placeholder="Enter type customize. ex(Regular)" value="<?= isset($model['customize_options'][0]['value']) ? $model['customize_options'][0]['value'] : ''; ?>" required>
+                                <input type="number" id="customizePrice1" name="customizePrice[]" placeholder="Enter price. ex(0)" value="<?= isset($model['customize_options'][0]['price']) ? $model['customize_options'][0]['price'] : ''; ?>" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" id="customizeType2" name="customizeType[]" placeholder="Enter type customize. ex(Medium)" value="<?= isset($model['customize_options'][1]['value']) ? $model['customize_options'][1]['value'] : ''; ?>">
+                                <input type="number" id="customizePrice2" name="customizePrice[]" placeholder="Enter price. ex(3000)"  value="<?= isset($model['customize_options'][1]['price']) ? $model['customize_options'][1]['price'] : ''; ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" id="customizeType3" name="customizeType[]" placeholder="Enter type customize. ex(Large)" value="<?= isset($model['customize_options'][2]['value']) ? $model['customize_options'][2]['value'] : ''; ?>">
+                                <input type="number" id="customizePrice3" name="customizePrice[]" placeholder="Enter price. ex(5200)" value="<?= isset($model['customize_options'][2]['price']) ? $model['customize_options'][2]['price'] : ''; ?>">
+                            </div>
                         </div>
                 </div>
                 <div class="col">
-                    <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">1. Size -></p>
-                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
-                        <a href="edit" class="edit">edit</a>
-                        <a href="delete" class="delete">delete</a>
-                    </div>
-                    <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">1. Size -></p>
-                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
-                        <a href="edit" class="edit">edit</a>
-                        <a href="delete" class="delete">delete</a>
-                    </div>
-                    <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">1. Size -></p>
-                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
-                        <a href="edit" class="edit">edit</a>
-                        <a href="delete" class="delete">delete</a>
-                    </div>
-                    <div class="Costumize">
-                        <p style="color: green; font-weight: bold;">1. Size -></p>
-                        <p>Regular: Rp0, Medium: Rp3.000, Large: Rp6.000</p>
-                        <a href="edit" class="edit">edit</a>
-                        <a href="delete" class="delete">delete</a>
-                    </div>
+                    <?php foreach ($model['customizes'] as $customize) : ?>
+                        <div class="Costumize">
+                            <p style="color: green; font-weight: bold;"><?= strtoupper($customize['name']); ?></p>
+                            <p>
+                                <?php foreach ($model['customizes_option'][$customize['id']] as $option) : ?>
+                                    <?php
+                                        if ($option['value'] != '') {
+                                            echo $option['value'] ?>: Rp<?= number_format($option['price'],0,',','.') .'; ';
+                                        }
+                                    ?>
+                                <?php endforeach; ?>
+                            </p>
+                            <a href="/admin/editproduct/<?= $model['product']['id']; ?>/<?= $customize['id']; ?>" class="edit">edit</a>
+                            <a href="/admin/removecustomize/<?= $model['product']['id']; ?>/<?= $customize['id']; ?>" class="delete"  onclick="return confirm('Remove Customize! Continue?');">delete</a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
         <div class="row">
-            <button onclick="return confirm('Update product! Continue?');">Update Now</button>
+            <button name="customize" onclick="return confirm('Update product! Continue?');">Add/Change Now</button>
             </form>
         </div>
     </div>

@@ -36,7 +36,13 @@ require_once __DIR__ . '/../component/navigation.php';
                         <td data-label="Category"><?= $model['product'][$i]['category']; ?></td>
                         <td data-label="Price">Rp.<?= number_format($model['product'][$i]['price'], 0, ',', '.'); ?></td>
                         <td data-label="Piece"><?= $model['product'][$i]['piece']; ?></td>
-                        <td data-label="Variant">Size - Variant - Sugar - Ice</td>
+                        <td data-label="Variant">
+                        <!-- <p style="color: green; font-weight: bold;"> -->
+                            <?php foreach ($model['customizes'][$i] as $customize) : ?>
+                                    <?= ucwords($customize['name']); ?>; 
+                            <?php endforeach; ?>
+                            <!-- </p> -->
+                        </td>
                         <td>
                             <div class="action">
                                 <a href="editproduct/<?= $model['product'][$i]['id']; ?>">
@@ -45,7 +51,7 @@ require_once __DIR__ . '/../component/navigation.php';
                                 <a href="draftproduct/<?= $model['product'][$i]['id']; ?>" onclick="return confirm('Change Status! Continue?');">
                                     <i class="fa-solid fa-box <?= ($model['product'][$i]['status'] == 'draft') ? 'warning' : '' ?><?= ($model['product'][$i]['status'] == 'empty') ? 'danger' : '' ?>"></i>
                                 </a>
-                                <a href="removeproduct/<?= $model['product'][$i]['id']; ?>">
+                                <a href="removeproduct/<?= $model['product'][$i]['id']; ?>" onclick="return confirm('Remove Product! Continue?');">
                                     <i class="fa-solid fa-trash-can" style="color: #E33131;"></i>
                                 </a>
                             </div>

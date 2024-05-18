@@ -5,6 +5,7 @@ namespace Nuazsa\Nuacof\Repositories;
 use PDO;
 use PDOException;
 use Nuazsa\Nuacof\Config\Connection;
+use Exception;
 
 /**
  * Repository class for admin authentication related database operations.
@@ -37,7 +38,7 @@ class AdminRepository
 
             return $stmt->fetch();
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
@@ -59,12 +60,18 @@ class AdminRepository
             $stmt->bindParam(':token', $token);
             $stmt->execute();
 
-            return $stmt->fetch();
+            // You may want to return the updated admin data here if needed
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 
+    /**
+     * Updates the status for the given email.
+     * @param string $email The email of the admin.
+     * @param string $status The new status for the admin.
+     * @throws Exception If there is an error executing the query.
+     */
     public function updateStatus($email, $status)
     {
         try {
@@ -73,9 +80,9 @@ class AdminRepository
             $stmt->bindParam(':email', $email);
             $stmt->execute();
 
-            return $stmt->fetch();
+            // You may want to return the updated admin data here if needed
         } catch (PDOException $e) {
-            throw new \Exception("Gagal menjalankan query: " . $e->getMessage());
+            throw new Exception("Failed to execute query: " . $e->getMessage());
         }
     }
 }
