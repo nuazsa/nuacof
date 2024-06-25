@@ -16,12 +16,7 @@ require_once __DIR__ . '/../component/navigation.php';
                 <form action="" method="POST" id="sortForm">
                     <select name="filter" id="filter" style="margin-left: 10px;" onchange="document.getElementById('sortForm').submit();">
                         <option value="id">Last Order</option>
-                        <option value="name">Order Name</option>
-                        <option value="category">Category</option>
-                        <option value="price">Price</option>
-                        <option value="piece">Piece</option>
-                        <option value="updatedAt">Date</option>
-                        <option value="status">Status</option>
+                        <option value="name">Datetime</option>
                     </select>
                 </form>
             </div>
