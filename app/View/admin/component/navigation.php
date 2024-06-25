@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/admin/root.css">
     <link rel="stylesheet" href="/css/admin/navigation.css">
     <link rel="stylesheet" href="/css/admin/<?= $model['css']; ?>.css">
+    <link rel="shortcut icon" href="/images/ad-login.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title><?= $model['title']; ?></title>
 </head>
@@ -42,7 +43,7 @@
                 <h4>Products</h4>
             </a>
 
-            <a href="/admin/orders" class="menu <?= ($model['title'] == 'Orders') ? 'menu-active' : '' ?>">
+            <a href="/admin/orders" class="menu <?= ($model['title'] == 'Orders' || $model['title'] == 'ViewOrder' ) ? 'menu-active' : '' ?>">
                 <i class="fa-regular fa-rectangle-list"></i>
                 <h4>Orders</h4>
             </a>

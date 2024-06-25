@@ -1,16 +1,24 @@
-.ProductFilterSorter {
+:root {
+    --pay-required-color: #FF0000;
+    --pending-color: #FFC107;
+    --processing-color:#007BFF;
+    --completed-color: #28A745;
+    --cancelled-color: #6C757D;
+}
+
+.OrderFilterSorter {
     display: flex;
     justify-content: space-between;
 }
 
-.ProductFilter,
-.ProductSorter,
-.ProductManager {
+.OrderFilter,
+.OrderSorter,
+.OrderManager {
     display: flex;
 }
 
-.ProductSorter i,
-.ProductManager a,
+.OrderSorter i,
+.OrderManager a,
 select,
 button {
     margin: 5px;
@@ -21,7 +29,7 @@ button {
     border: none;
 }
 
-.ProductListView {
+.OrderListView {
     margin: 10px 0;
 }
 
@@ -75,20 +83,62 @@ a {
     border-radius: 8px;
 }
 
-.action i,
-button {
-    color: var(--no-active-color);
-}
-.action i:hover,
-button:hover {
-    color: var(--block-color);
+.status {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 5px 10px;
+    border: 1px solid var(--cancelled-color);
+    border-radius: 8px;
 }
 
-button.selected {
-    color: var(--block-color);
+.status p {
+    color: var(--cancelled-color);
+}
+
+/* Pay Required */
+.pay-required {
+    border: 1px solid var(--pay-required-color);
+}
+
+.pay-required p {
+    color: var(--pay-required-color);
+}
+
+/* Pending */
+.pending {
+    border: 1px solid var(--pending-color);
+}
+
+.pending p {
+    color: var(--pending-color);
+}
+
+/* Processing */
+.processing {
+    border: 1px solid var(--processing-color);
+}
+
+.processing p {
+    color: var(--processing-color);
+}
+
+/* Completed */
+.completed {
+    border: 1px solid var(--completed-color);
+}
+
+.completed p {
+    color: var(--completed-color);
+}
+
+.action i:hover,
+button:hover {
+    color: var(--info-color);
 }
 
 .action i {
+    color: var(--no-active-color);
     padding: 0 5px;
 }
 
@@ -102,13 +152,13 @@ button.selected {
 
 @media (max-width: 768px) {
 
-    .ProductSorter i,
-    .ProductManager a {
+    .OrderSorter i,
+    .OrderManager a {
         font-size: 12px;
         white-space: nowrap;
     }
 
-    .ProductFilterSorter {
+    .OrderFilterSorter {
         flex-direction: column;
     }
 
@@ -162,7 +212,7 @@ button.selected {
 }
 
 @media (max-width: 425px) {
-    .ProductFilter i {
+    .OrderFilter i {
         display: none;
     }
 

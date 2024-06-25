@@ -41,8 +41,8 @@ class ProductRepository
             $sql = "SELECT * FROM products ORDER BY $filter $order, id DESC LIMIT 5 OFFSET $offset";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
-
-            return $stmt->fetchAll();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }
@@ -61,7 +61,7 @@ class ProductRepository
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 
-            return $stmt->fetch();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }
@@ -78,7 +78,7 @@ class ProductRepository
             $stmt = $this->connection->prepare("SELECT count(*) as total FROM products");
             $stmt->execute();
 
-            return $stmt->fetch();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }

@@ -27,14 +27,12 @@ require_once __DIR__ . '/../component/navigation.php';
             </thead>
 
             <tbody>
-                <?php
-                for ($i = 0; $i < count($model['product']); $i++) :
-                ?>
+                <?php for ($i = 0; $i < count($model['product']); $i++) : ?>
                     <tr>
                         <td><img src="/images/uploads/products/<?= $model['product'][$i]['image']; ?>" width="50px" alt="<?= $model['product'][$i]['image']; ?>"></td>
                         <td data-label="Name"><?= $model['product'][$i]['name']; ?></td>
                         <td data-label="Category"><?= $model['product'][$i]['category']; ?></td>
-                        <td data-label="Price">Rp.<?= number_format($model['product'][$i]['price'], 0, ',', '.'); ?></td>
+                        <td data-label="Price">Rp<?= number_format($model['product'][$i]['price'], 0, ',', '.'); ?></td>
                         <td data-label="Piece"><?= $model['product'][$i]['piece']; ?></td>
                         <td data-label="Variant">
                         <!-- <p style="color: green; font-weight: bold;"> -->
@@ -57,9 +55,7 @@ require_once __DIR__ . '/../component/navigation.php';
                             </div>
                         </td>
                     </tr>
-                <?php
-                endfor;
-                ?>
+                <?php endfor; ?>
             </tbody>
         </table>
     </div>

@@ -64,7 +64,7 @@ class ProductsController
 
         $model = [
             'title' => 'Products',
-            'css' => 'Products',
+            'css' => '/Products/style',
             'product' => $product,
             'customizes' => $customizes,
             'count' => $count,
@@ -107,7 +107,7 @@ class ProductsController
 
             $model = [
                 'title' => 'Add Product',
-                'css' => 'addproduct'
+                'css' => '/Products/update'
             ];
 
             View::render('admin/products/add', $model);
@@ -196,7 +196,7 @@ class ProductsController
             
             $model = [
                 'title' => 'Edit Product',
-                'css' => 'addproduct',
+                'css' => '/Products/update',
                 'product' => $product,
                 'customizes' => $customizes,
                 'customizes_option' => $options
@@ -257,7 +257,7 @@ class ProductsController
             
             $model = [
                 'title' => 'Edit Product',
-                'css' => 'addproduct',
+                'css' => '/Products/update',
                 'product' => $product,
                 'customize' => $customize,
                 'customize_options' => $customize_options,

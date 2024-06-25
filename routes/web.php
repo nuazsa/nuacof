@@ -10,20 +10,29 @@ use Nuazsa\Nuacof\Controllers\admin\ProductsController;
 use Nuazsa\Nuacof\Controllers\admin\AdminAuthController;
 use Nuazsa\Nuacof\Controllers\admin\DashboardController;
 
-// Define routes
-Router::prefix('/admin', function() {
-    Router::get('/', DashboardController::class, 'index');
 
+/**
+ * Define routes
+ * Prefix for admin
+ */
+Router::prefix('/admin', function() {
+    /**
+     * Authentication
+     */
     Router::get('/signup', AdminAuthController::class, 'signup');
     Router::post('/signup', AdminAuthController::class, 'signup');
-
     Router::get('/signin', AdminAuthController::class, 'signin');
     Router::post('/signin', AdminAuthController::class, 'signin');
-
     Router::get('/logout', AdminAuthController::class, 'logout');
 
+    /**
+     * Dashboard
+     */
     Router::get('/dashboard', DashboardController::class, 'index', [AdminAuthMiddleware::class]);
     
+    /**
+     * Products
+     */
     Router::get('/products', ProductsController::class, 'index', [AdminAuthMiddleware::class]);
     Router::post('/products', ProductsController::class, 'index', [AdminAuthMiddleware::class]);
     Router::get('/addproduct', ProductsController::class, 'addproduct', [AdminAuthMiddleware::class]);
@@ -36,7 +45,12 @@ Router::prefix('/admin', function() {
     Router::get('/removecustomize/([0-9]*)/([0-9]*)', ProductsController::class, 'removecustomize', [AdminAuthMiddleware::class]);
     Router::get('/draftproduct/([0-9]*)', ProductsController::class, 'draftproduct', [AdminAuthMiddleware::class]);
 
+    /**
+     * Orders
+     */
     Router::get('/orders', OrdersController::class, 'index', [AdminAuthMiddleware::class]);
+    Router::get('/completeorder/([0-9]*)', OrdersController::class, 'completeorder', [AdminAuthMiddleware::class]);
+    Router::get('/vieworder/([0-9]*)', OrdersController::class, 'vieworder', [AdminAuthMiddleware::class]);
 
     Router::get('/ui', UiController::class, 'index', [AdminAuthMiddleware::class]);
 

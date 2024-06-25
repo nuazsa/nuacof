@@ -1,0 +1,183 @@
+#main {
+    display: flex;
+}
+
+#main .MainSidebar {
+    height: 80vh;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--background-secondary-color);
+    border-radius: 8px;
+    border: 1px var(--disable-color) solid;
+}
+
+#main .MainSidebar .title {
+    padding: 10px 0px;
+    border-bottom: 1px var(--disable-color) solid;
+}
+
+#main .MainMenu {
+    background-color: var(--background-secondary-color);
+    border-radius: 8px;
+    height: 80vh;
+    width: 100%;
+    margin-left: 20px;
+    border: 1px var(--disable-color) solid;
+    overflow-y: auto;
+}
+
+/* Styling for the scrollbar track */
+.MainSidebar::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+
+/* Styling for the scrollbar thumb */
+.MainSidebar::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+    border: 2px solid #ddd; /* Optional: Adds a border to the thumb for better visibility */
+}
+
+/* Styling for the scrollbar thumb on hover */
+.MainSidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+}
+
+/* Styling for the scrollbar track */
+.MainSidebar::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+/* Styling for the scrollbar corner */
+.MainSidebar::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; /* Color of the scrollbar corner */
+}
+
+.order {
+    border-bottom: 1px solid #ddd;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+.row {
+    padding: 2px 0;
+    align-content: center;
+}
+
+.row.cash {
+    text-align: right;
+}
+
+.col {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#main .title {
+    margin: 10px;
+    overflow-y: none;
+}
+
+.OrderInfo,
+.OrderVoucher {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #F3F3F3;
+    border-top: 1px var(--disable-color) solid;
+    border-bottom: 1px var(--disable-color) solid;
+}
+
+.OrderInfo,
+.OrderLabel,
+.Product,
+.OrderVoucher .row,
+.OrderSummary .row {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px;
+}
+
+.OrderLabel {
+    border-bottom: 1px var(--disable-color) solid;
+}
+
+.OrderLabel,
+.OrderValue .Product {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+} 
+
+p, i{
+    font-size: 12px;
+    color: var(--no-active-color);
+}
+
+.action {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 5px;
+    border-top: 1px solid var(--no-active-color);
+    border-bottom: 1px solid var(--no-active-color);
+    /* border-radius: 8px; */
+    margin-left: 50%;
+}
+
+.action i {
+    padding: 0 3px;
+}
+
+.action i {
+    color: var(--no-active-color);
+}
+
+.action i:hover {
+    color: var(--success-color);
+}
+
+@media (max-width: 768px) {
+    #main .MainSidebar {
+        display: none;
+    }
+
+    #main .MainMenu {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 600px) {
+    .OrderInfo,
+    .Product,
+    .OrderVoucher .row,
+    .OrderSummary .row {
+        flex-direction: column;
+    }
+
+    .OrderLabel {
+        display: none;
+    }
+
+    .OrderLabel,
+    .OrderValue .Product {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .Product .row.cash {
+        display: none;
+    }
+
+    .Product .row.cash.piece {
+        display: block;
+    }
+}

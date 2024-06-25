@@ -1,4 +1,5 @@
 <?php
+
 namespace Nuazsa\Nuacof\Repositories;
 
 use PDO;
@@ -32,7 +33,7 @@ class CustomizeRepository
             $stmt->bindParam(':idProduct', $idProduct);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }
@@ -51,7 +52,7 @@ class CustomizeRepository
             $stmt->bindParam(':idCustomize', $idCustomize);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }
@@ -70,7 +71,7 @@ class CustomizeRepository
             $stmt->bindParam(':idCustomizeOption', $idCustomizeOption);
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }

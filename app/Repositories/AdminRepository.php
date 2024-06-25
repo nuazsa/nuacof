@@ -36,7 +36,7 @@ class AdminRepository
             $stmt->bindParam(':email', $email);
             $stmt->execute();
 
-            return $stmt->fetch();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             throw new Exception("Failed to execute query: " . $e->getMessage());
         }
