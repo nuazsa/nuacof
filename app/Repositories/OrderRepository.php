@@ -20,10 +20,19 @@ class OrderRepository
         $this->connection = Connection::getConnection();
     }
 
-    public function getAllOrder()
+    public function getAllOrder($filter = 'createdAt', $order = 'DESC', $offset = 0)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM orders");
+            $allowedColumns = ['createdAt', 'updatedAt'];
+            $filter = in_array($filter, $allowedColumns) ? $filter : 'createdAt';
+
+            $order = in_array(strtoupper($order), ['ASC', 'DESC']) ? $order : 'DESC';
+
+            $offset = filter_var($offset, FILTER_VALIDATE_INT);
+            $offset = ($offset !== false && $offset >= 0) ? $offset : 0;
+            
+            $sql = "SELECT * FROM orders ORDER BY $filter $order, createdAt DESC LIMIT 5 OFFSET $offset";
+            $stmt = $this->connection->prepare($sql);
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

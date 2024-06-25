@@ -28,28 +28,28 @@ class ProductsController
 
     public function index()
     {
-        $this->filter = isset($_SESSION['filter']) ? $_SESSION['filter'] : '';
-        $this->sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : '';
-        $this->pagination = isset($_SESSION['pagination']) ? $_SESSION['pagination'] : 0;
+        $this->filter = isset($_SESSION['product_filter']) ? $_SESSION['product_filter'] : '';
+        $this->sort = isset($_SESSION['product_sort']) ? $_SESSION['product_sort'] : '';
+        $this->pagination = isset($_SESSION['product_pagination']) ? $_SESSION['product_pagination'] : 0;
 
         $count = $this->productService->countProduct();
 
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-            if (isset($_POST['filter'])) {
-                $this->filter = htmlspecialchars($_POST['filter']);
-                $_SESSION['filter'] = $this->filter;
+            if (isset($_POST['product_filter'])) {
+                $this->filter = htmlspecialchars($_POST['product_filter']);
+                $_SESSION['product_filter'] = $this->filter;
             }
-            if (isset($_POST['sort'])) {
-                $this->sort = htmlspecialchars($_POST['sort']);
-                $_SESSION['sort'] = $this->sort;
+            if (isset($_POST['product_sort'])) {
+                $this->sort = htmlspecialchars($_POST['product_sort']);
+                $_SESSION['product_sort'] = $this->sort;
             } 
 
             if (isset($_POST['pagination'])) {
-                $direction = $_POST['pagination'];
+                $direction = $_POST['product_pagination'];
                 if ($direction === '+' || $direction === '-') {
                     $this->pagination += ($direction === '+') ? 5 : -5;
                     $this->pagination = max(0, min($this->pagination, $count));
-                    $_SESSION['pagination'] = $this->pagination;
+                    $_SESSION['product_pagination'] = $this->pagination;
                 }
             }
             

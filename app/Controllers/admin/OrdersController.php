@@ -18,9 +18,15 @@ class OrdersController
     {
         $orders = $this->orderService->getAllOrder();
         // var_dump($orders); exit;
+        
+
         $model = [
             'title' => 'Orders',
             'css' => '/Orders/style',
+            'count' => $count,
+            'filter' => $this->filter,
+            'sort' => $this->sort,
+            'pagination' => $this->pagination,
             'action' => 'Date',
             'orders' => $orders
         ];

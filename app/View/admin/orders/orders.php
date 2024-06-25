@@ -17,6 +17,8 @@ require_once __DIR__ . '/../component/navigation.php';
                     <select name="filter" id="filter" style="margin-left: 10px;" onchange="document.getElementById('sortForm').submit();">
                         <option value="id">Last Order</option>
                         <option value="name">Datetime</option>
+                        <option value="name" <?= ($model['filter'] == 'name') ? 'selected' : ''; ?>>Product Name</option>
+                        <option value="category" <?= ($model['filter'] == 'category') ? 'selected' : ''; ?>>Category</option>
                     </select>
                 </form>
             </div>
@@ -56,7 +58,7 @@ require_once __DIR__ . '/../component/navigation.php';
                     <td><?= $model['orders'][$i]['idTransaction']; ?></td>
                     <td><?= $model['orders'][$i]['name']; ?></td>
                     <td>Rp<?= number_format($model['orders'][$i]['amount'], 0, ',', '.'); ?></td>
-                    <td><?= $model['orders'][$i]['createdAt']; ?></td>
+                    <td><?= $model['orders'][$i]['updatedAt']; ?></td>
                     <td><?= $model['orders'][$i]['payment']; ?></td>
                     <td>
                         <?php
