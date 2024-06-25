@@ -18,10 +18,17 @@ class OrderService
         $this->orderRepository = new OrderRepository;
     }
 
-    public function getAllOrder()
+    public function getAllOrder($filter, $order, $pagination)
     {
-        $id = $this->orderRepository->getAllOrder();
+        $id = $this->orderRepository->getAllOrder($filter, $order, $pagination);
         return $id;
+    }
+
+    public function countOrder()
+    {
+        $total = $this->orderRepository->getTotalOrder();
+        $total = $total['total'];
+        return $total;
     }
 
     public function changestatus($idTransaction, $status)

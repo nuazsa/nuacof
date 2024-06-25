@@ -132,10 +132,19 @@ a {
     color: var(--completed-color);
 }
 
+.action i,
+button {
+    color: var(--no-active-color);
+}
 .action i:hover,
 button:hover {
-    color: var(--info-color);
+    color: var(--block-color);
 }
+
+button.selected {
+    color: var(--block-color);
+}
+
 
 .action i {
     color: var(--no-active-color);

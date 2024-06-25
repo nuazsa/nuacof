@@ -49,6 +49,7 @@ Router::prefix('/admin', function() {
      * Orders
      */
     Router::get('/orders', OrdersController::class, 'index', [AdminAuthMiddleware::class]);
+    Router::post('/orders', OrdersController::class, 'index', [AdminAuthMiddleware::class]);
     Router::get('/completeorder/([0-9]*)', OrdersController::class, 'completeorder', [AdminAuthMiddleware::class]);
     Router::get('/vieworder/([0-9]*)', OrdersController::class, 'vieworder', [AdminAuthMiddleware::class]);
 

@@ -14,11 +14,9 @@ require_once __DIR__ . '/../component/navigation.php';
             </div>
             <div class="box">
                 <form action="" method="POST" id="sortForm">
-                    <select name="filter" id="filter" style="margin-left: 10px;" onchange="document.getElementById('sortForm').submit();">
-                        <option value="id">Last Order</option>
-                        <option value="name">Datetime</option>
-                        <option value="name" <?= ($model['filter'] == 'name') ? 'selected' : ''; ?>>Product Name</option>
-                        <option value="category" <?= ($model['filter'] == 'category') ? 'selected' : ''; ?>>Category</option>
+                    <select name="order_filter" id="order_filter" style="margin-left: 10px;" onchange="document.getElementById('sortForm').submit();">
+                        <option value="createdAt" <?= ($model['filter'] == 'createdAt') ? 'selected' : ''; ?>>Last Order</option>
+                        <option value="updatedAt" <?= ($model['filter'] == 'updatedAt') ? 'selected' : ''; ?>>Updated Order</option>
                     </select>
                 </form>
             </div>
@@ -26,10 +24,10 @@ require_once __DIR__ . '/../component/navigation.php';
         <form action="" method="post">
             <div class="OrderFilter">
                 <div class="box">
-                    <button class="" type="submit" name="sort" value="asc">Asc</button>
+                    <button class="<?= ($model['sort'] == 'asc') ? 'selected' : ''; ?>" type="submit" name="order_sort" value="asc">Asc</button>
                 </div>
                 <div class="box">
-                    <button class="" type="submit" name="sort" value="desc">Desc</button>
+                    <button class="<?= ($model['sort'] == 'desc') ? 'selected' : ''; ?>" type="submit" name="order_sort" value="desc">Desc</button>
                 </div>
             </div>
         </form>
@@ -90,13 +88,13 @@ require_once __DIR__ . '/../component/navigation.php';
         </table>
     </div>
     <div class="pagination">
-        <p>Showing 1-5 of 30</p>
+        <p>Showing <?= min($model['pagination'] + 1, $model['count']); ?>-<?= min($model['pagination'] + 5, $model['count']); ?> of <?= $model['count']; ?></p>
         <form action="" method="post">
             <div class="pagination-buttons">
-                <button class="" type="submit" name="pagination" value="-">
+                <button class="" type="submit" name="order_pagination" value="-">
                     <i class="fa-solid fa-angles-left"></i>
                 </button>
-                <button class="" type="submit" name="pagination" value="+">
+                <button class="" type="submit" name="order_pagination" value="+">
                     <i class="fa-solid fa-angles-right"></i>
                 </button>
             </div>

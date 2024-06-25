@@ -41,6 +41,18 @@ class OrderRepository
         }
     }
 
+    public function getTotalOrder()
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT count(*) as total FROM orders");
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to execute query: " . $e->getMessage());
+        }
+    }
+
     public function updateStatus($idTransaction, $status) 
     {
         try {
