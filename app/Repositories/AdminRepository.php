@@ -42,6 +42,18 @@ class AdminRepository
         }
     }
 
+    public function findById($id)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM admin WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Failed to execute query: " . $e->getMessage());
+        }
+    }
     /**
      * Updates the password and token for the given email.
      * @param string $email The email of the admin.

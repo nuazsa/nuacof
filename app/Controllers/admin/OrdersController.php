@@ -4,10 +4,14 @@ namespace Nuazsa\Nuacof\Controllers\admin;
 
 use Nuazsa\Nuacof\View;
 use Nuazsa\Nuacof\Services\OrderService;
+use Nuazsa\Nuacof\Services\AdminService;
+use Nuazsa\Nuacof\Services\ProductService;
 
 class OrdersController
 {
     private $orderService;
+    private $adminService;
+    private $productService;
     
     private string $filter;
     private string $sort;
@@ -16,6 +20,8 @@ class OrdersController
     public function __construct()
     {
         $this->orderService = new OrderService();
+        $this->adminService = new AdminService();
+        $this->productService = new ProductService();
     }
 
     public function index()
@@ -83,13 +89,28 @@ class OrdersController
         }
     }
 
-    public function vieworder()
+    public function vieworder($id)
     {
-        $orders = $this->orderService->getAllOrder($this->filter, $this->sort, $this->pagination);
+        $orders = $this->orderService->getAllOrder('createdAt', 'DESC', '');
+        $order = $this->orderService->getOrder($id);
+        $cashier = $this->adminService->getAdmin($order['idCashier']);
+        $products = $this->orderService->getProduct($order['idCart']);
+
+        $productsDetails = [];
+        
+        // Loop through each product ID and retrieve the product details
+        for ($i = 0; $i < count($products); $i++) {
+            $productsDetails[] = $this->productService->getProduct($products[$i]['product_id']);
+        }
+
         $model = [
             'title' => 'ViewOrder',
             'css' => '/Orders/detail',
-            'orders' => $orders
+            'orders' => $orders,
+            'order' => $order,
+            'products' => $products,
+            'productsDetails' => $productsDetails,
+            'cashier' => $cashier['name']
         ];
         view::render('admin/orders/view', $model);
     }

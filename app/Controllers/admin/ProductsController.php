@@ -44,7 +44,7 @@ class ProductsController
                 $_SESSION['product_sort'] = $this->sort;
             } 
 
-            if (isset($_POST['pagination'])) {
+            if (isset($_POST['product_pagination'])) {
                 $direction = $_POST['product_pagination'];
                 if ($direction === '+' || $direction === '-') {
                     $this->pagination += ($direction === '+') ? 5 : -5;

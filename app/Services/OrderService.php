@@ -23,6 +23,12 @@ class OrderService
         $id = $this->orderRepository->getAllOrder($filter, $order, $pagination);
         return $id;
     }
+    
+    public function getOrder($id)
+    {
+        $id = $this->orderRepository->getOrderById($id);
+        return $id;
+    }
 
     public function countOrder()
     {
@@ -34,6 +40,12 @@ class OrderService
     public function changestatus($idTransaction, $status)
     {
         $id = $this->orderRepository->updateStatus($idTransaction, $status);
+        return $id;
+    }
+
+    public function getProduct($idCart) {
+        
+        $id = $this->orderRepository->getOrderProduct($idCart);
         return $id;
     }
 }

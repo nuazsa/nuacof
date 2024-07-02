@@ -75,8 +75,12 @@ require_once __DIR__ . '/../component/navigation.php';
                     </td>
                     <td>
                         <div class="action">
-                            <?php if ($model['orders'][$i]['status'] !== 'Completed' && $model['orders'][$i]['status'] !== 'Pay Required') : ?>
-                                <a href="/admin/completeorder/<?= $model['orders'][$i]['idTransaction']; ?>"><i class="fa-solid fa-check" onclick="return confirm('Completed Order! Continue?');"></i></a>
+                            <?php if ($model['orders'][$i]['status'] === 'Pay Required'): ?>
+                                <a  id="openModalBtn"><i class="fa-solid fa-receipt"></i></a>
+                            <?php elseif ($model['orders'][$i]['status'] === 'Pending'): ?>
+                                <a href=""><i class="fa-solid fa-clock"></i></a>
+                            <?php elseif ($model['orders'][$i]['status'] === 'Processing'): ?>
+                                <a href=""><i class="fa-solid fa-check-to-slot"></i></a>
                             <?php endif; ?>
                             <a href="/admin/vieworder/<?= $model['orders'][$i]['idTransaction']; ?>"><i class="fa-solid fa-share"></i></a>
                         </div>
@@ -101,6 +105,52 @@ require_once __DIR__ . '/../component/navigation.php';
         </form>
 </section>
 
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h1>Input Pembayaran</h1>
+        <form action="/submit-payment" method="POST">
+            <div class="form-group">
+                <label for="customerName">Nama Pelanggan</label>
+                <input type="text" id="customerName" name="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Jumlah Pembayaran</label>
+                <input type="number" id="amount" name="amount" required>
+            </div>
+            <div class="form-group">
+                <label for="paymentMethod">Metode Pembayaran</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="cash">Cash</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('modal');
+    var openModalBtn = document.getElementById('openModalBtn');
+    var closeModalBtn = document.getElementsByClassName('close-btn')[0];
+
+    openModalBtn.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    closeModalBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+</script>
 <script src="/js/admin/script.js"></script>
 
 

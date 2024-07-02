@@ -134,6 +134,11 @@ p, i{
     margin-left: 50%;
 }
 
+.action.disable {
+    border-top: 1px solid var(--disable-color);
+    border-bottom: 1px solid var(--disable-color);
+}
+
 .action i {
     padding: 0 3px;
 }
@@ -142,8 +147,16 @@ p, i{
     color: var(--no-active-color);
 }
 
+.action.action.disable i {
+    color: var(--disable-color);
+}
+
 .action i:hover {
     color: var(--success-color);
+}
+
+.disable i {
+    color: var(--disable-color);
 }
 
 @media (max-width: 768px) {
